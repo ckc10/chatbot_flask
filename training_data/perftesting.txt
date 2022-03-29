@@ -1,0 +1,1440 @@
+What is Performance Testing?
+General Definition
+Performance Testing is the process of determining the responsiveness of the system under given hardware, software and load conditions. This process can involve qualitative and quantitative analysis.
+Quantitative analysis like measuring the response time of the business operation in seconds or milliseconds. Qualitative analysis such as scalability, reliability and interoperability. Performance testing can also be done in conjunction with load, stress and volume testing.
+Wikipedia say’s:-
+In software engineering, performance testing is in general testing performed to determine how a system performs in terms of responsiveness and stability under a particular workload. It can also serve to investigate measure, validate or verify other quality attributes of the system, such as scalability, reliability and resource usage.
+The main objectives of performance testing is to identify the bottlenecks on Application Under Test. The process of identifying the bottlenecks can be done with diagnosis in different layers of the Application Under Test such as presentation layer (web server), business layer (Application Server), data layer(Database).
+Performance Testing is also used to evaluate the service level agreements (such as average response time of the business scenario, throughput, hits per second and Errors per second etc) of the customer
+Performance Testing Types
+Overview
+Performance Test is a generic term that can be used to carry out different types performance related activities. Each type of performance related activity will be used to identify the different types of potential risks and problems of the application under test. So majorly performance test types can be categorized into:
+1.	Load Testing
+2.	Endurance / Longevity / Soak Testing
+3.	Stress Testing
+4.	Spike Testing
+5.	Capacity Testing
+6.	Scalability Testing
+7.	Isolation Testing
+What is Load Testing ?
+Load testing is the simplest form of performance testing. A load test is usually conducted to understand the behaviour of the system under a specific expected load. This load can be the expected concurrent number of users on the application performing a specific number of transactions within the set duration. This test will give out the response times of all the important business critical transactions. If the database, application server, etc. are also monitored, then this simple test can itself point towards any bottlenecks in the application software.
+Load testing is process of simulating the multiple users accessing the application under test simultaneously. In this case, the number of users on the system should be as realistic (near to the real time usage) as possible. The main purpose of load testing is to validate the application behavior under normal and peak load conditions.
+Results Reported after the load Test:
+•	The system will be validated to ensure whether the service level agreements or performance objectives are met
+•	Average, max, min and standard deviation of response times for each scenario will be measure and reported
+•	Resource utilization of each of the systems which are part of AUT will be monitored and reported
+•	If there is any application break point below the peak load condition, it need to be identified and reported
+Endurance / Longevity / Soak Testing
+Endurance / Longevity / Soak Testing is part of load testing. The test will be executed on AUT with huge volume of data for an extended period of time. The main purpose of endurance testing is to check the AUT reliability and stability. Endurance testing, is usually done to determine if the system can sustain the continuous expected load. During soak tests, memory utilization is monitored to detect potential leaks. Also important, but often overlooked is performance degradation. That is, to ensure that the throughput and/or response times after some long period of sustained activity are as good or better than at the beginning of the test. It essentially involves applying a significant load to a system for an extended, significant period of time. The goal is to discover how the system behaves under sustained use.
+Results Reported after the Endurance / Longevity / Soak Testing Test:
+When the endurance test is conducted on a multi tier web based enterprise level applications the following kind of results will be reported
+•	Memory leaks on the application servers
+•	JVM Heap size utilization on the application servers
+•	Connection leaks on the database server
+•	Cursor leaks on the data base servers
+•	Response time (consistency or degradation) comparison for start of the load test to end of the load test
+•	Systems Resource (Memory, CPU, Network and Disk usage etc) comparison for beginning of the load test to end of the load test
+•	Application errors occurrence over the period of time
+Stress Testing
+Stress testing is the process of validating the AUT behavior under extreme or peak load conditions. In this type of testing the break point of the application will be identified to conclude the maximum number of users supported by the system without any issues.Stress testing is normally used to understand the upper limits of capacity within the system. This kind of test is done to determine the system's robustness in terms of extreme load and helps application administrators to determine if the system will perform sufficiently if the current load goes well above the expected maximum.
+Determining the Stress Point:
+•	Transaction response times are exponentially increased
+•	The application started throwing the errors for many users
+•	The system stopped responding
+•	At least one of the server in AUT architecture got crashed
+•	The system resource utilization went beyond the acceptable limits
+Results Reported after Stress Testing
+•	The maximum number of users supported by AUT
+•	Let us assume that, the system resources are utilized beyond the expected limits. After the stress test, when the normal amount of users are running, the status of the application in terms of the resources utilization will be reported
+•	Assume that there are many errors are coming when the stress testing is been conducted. After the stress test, when the normal amount of users are running the status of the application in terms of the errors will be reported
+Spike Testing
+A spike testing is a process of validating the systems behavior in a endurance testing by increasing the users beyond the expected limits for shorter durations. It is part of stress testing.Spike testing is done by suddenly increasing the number of or load generated by, users by a very large amount and observing the behaviour of the system. The goal is to determine whether performance will suffer, the system will fail, or it will be able to handle dramatic changes in load.
+Results Reported after Spike Testing
+•	The systems resources are utilization comparison for, with and without spikes
+•	The response times comparison for, with and without spikes
+•	Observation on errors for, with and without spikes
+Capacity Testing
+Capacity testing is a process of evaluating the existing infrastructure or new infrastructure to support the future growth of the business, where more number of user hits and huge volume of data are expected. This testing will be conducted as part of capacity planning.
+Results Reported after capacity Testing
+•	The hardware resource related bottlenecks will be reported
+•	Recommendation on new hardware
+•	Up gradation of existing hardware
+•	Change in the existing application deployment architecture to support the future growth
+•	Introducing new servers in the application deployment architecture
+Scalability Testing
+Scalability testing is a process of evaluating the systems behavior when the number of simultaneous users is increasing, and the hardware and software resources are fixed. This testing will be conducted for comparing the response times and system resource utilization of AUT when the number of users are increased.
+Results Reported after Scalability Testing
+•	The comparison charts of different number of users and their response times
+•	The comparison charts of system resource utilization for different amount of users
+•	Scalability issues when the number of users are incremented
+•	Identification of scalable point of the application
+Isolation Testing
+Isolation testing is not unique to performance testing but involves repeating a test execution that resulted in a system problem. Often used to isolate and confirm the fault domain. Isolation testing is a process of isolating a specific scenario of the AUT, when the multiple scenarios are part of the load testing. When the load test happens on the AUT, multiple business scenarios will be part of the load test execution. Assume that during the load test execution, one of the scenarios is causing the problem within all the business scenarios. Isolation of that business scenario is called as Isolation testing. The Isolated scenario will be executed with multiple users to determine the problem within AUT Architecture.
+Results Reported after Isolation Testing
+•	The problematic scenario in the load test
+•	Which part or layer of the application is identified as problem
+•	Recommendation of fixes
+Configuration testing
+Rather than testing for performance from the perspective of load, tests are created to determine the effects of configuration changes to the system's components on the system's performance and behaviour. A common example would be experimenting with different methods of load-balancing.
+Thick Client Vs Thin Client
+Thin Client	Thick Client
+Mostly it is a web based client. Will be accessed through a common client called browser	It will be accessible through client software which is installed locally
+Business logic will be there in middleware’s or application servers.	Business logic will be installed in the local machine.
+When the URL is accessed most of the business logic will be executed on the server. And some client side processing and rendering happens within the browser	When the client get installed all the business logic of the application installed locally
+Thin client uses stateless connections. For each request connection will be opened and after the response it will be closed	Thick client uses dedicated connections
+Thin clients are slower in response
+Thin clients are slower in response	Thick clients are faster in response
+•	Connection needs to be opened explicitly for each request
+•	Pages needs to be downloaded from presentation layer
+•	Data needs to be retrieved from the DB
+•	Business logic related processing will be happening in the middle wares or application servers
+	•	Most of the processing happens locally
+•	Connections will be closed only explicit logouts
+Thin clients will be used by the external users. Ex: Bank customers	Thick clients will be used by the internal users most of the times: Ex: Bank employees and customer support executives
+Inputs for performance test plan
+Before someone writes the performance test plan, there are many inputs need to be considered. Performance testing team should gather different types of requirements like real time operations of business, application related settings and customer infrastructure. The below mentioned points will give a fair idea to a performance tester, which need to be kept in performance test plan.
+1.	List all milestones and deliverables of the performance testing
+2.	Define performance objectives
+3.	Define the scope of performance testing
+4.	Create physical architecture diagram for the application under test. Ensure that it is matching to the real time deployment or production environment of customer
+5.	List hardware requirements for all the servers involved in the application under test (Ex: Firewall, Load balancers, Web Servers, Application Servers and Database servers hardware configurations)
+6.	List software requirements (including versions and vendors of the software involved) for the all the servers.
+7.	List the optimum software configurations (ex: heap size, thread pool, connections etc. for application servers) for all the servers need to be mentioned.
+8.	Gather the requirements for database volume(size) of the customer
+9.	Identify the performance thresholds or bench marks
+10.	Identify the total number of users (in user table), logged in users, simultaneous users and concurrent users within the entire system
+11.	Identify the business scenarios for creating the test scripts. And also identify the measurable business activities in the business scenario
+12.	Identify the business scenarios ratio or percentage of user activities based on the real time usage (For ex: search users, view users and creations etc). Define the user load mix.
+13.	Identify if there are any internal batch processes are running within the application under test
+14.	List the browsers or client side configurations to simulate the real time user load
+15.	Identify the different types of bandwidths used by the application real time users
+16.	List the user locations, where the exact hits are coming to the application under test
+17.	Identify the load test types (ex: endurance, stress, volume etc.) to simulate customer needs
+18.	If the application is already in production get the average hits per second and average throughput for second
+19.	Identify the acceptable system resource utilization ranges and define
+20.	Identify the acceptable application specific resource counters and define.
+21.	Identify the test lab (HP, Sun, Dell and IBM etc), if your organization doesn’t have enough hardware infrastructure
+22.	Identify the personnel to report the performance bottlenecks
+Skills Required for Performance test Engineer
+Performance testing is a niche skills, it needs various skills in addition to functional testing skills. People who wants to develop their career should understand the system as a whole and all the components involved in the system. The performance is a measure of how your application is performing under a given load conditions. During performance testing, you need analyze and find the performance bottlenecks. You will need to understand how the system works, different components involved with the system etc. The bottleneck can be at any place in a distributed system setup. It needs good skills on how operating system, network, disk I/o, Processors, Memory works for example having more than 90% CPU doesn't mean there is issue with CPU.
+Performance testing is lot more than having knowledge about how to create a scripts for a particular load testing tool. It is possible to think, having deep skills in creating load test scripts and executing them mechanically on an application is performance testing. and monitoring and analyzing the results are work on other performance experts but it actually combination both and much more.
+Thinking about skills needed for performance testing I'd specify the following areas in addition to load testing like Find what is going on with the system? Monitoring and Performance Analysis. Knowledge on performance counters needs to be monitored
+You got results. Analyze the results. check for any visible bottleneck. Verify if tuning any system, application parameter would help
+Tuning doesn't help - the bottleneck is in the application. See if any code profiling would help
+Take the SQL trace and analyze if the SQL's creating performance bottleneck
+And write, present, communicate to all concerned
+Performance test engineer needs to know about the tunable parameters on OS, Network, Database. Also idea about how the application should be designed to perform better under load conditions. May not need to be an expert but need to learn the tricks as you progress on the career. There may be a question like how to acquire so many skills, answer could be simple - constant self learning, putting extra efforts and getting experience on the job. It takes time to learn and become expert. Basic understanding of the system should be a starting point and put efforts to learn and understand the performance of a system as a whole. Different components involved in the distributed computing. Any one component or the part of the system can cause the performance bottleneck. Engineer should be well versed with OS concepts, basic networking fundamentals, Technology used in the application development etc
+Another important thing to understand is the objective of the performance testing and what you really want to achieve with the performance test results. You may need to use different approach for performance testing depending upon the objective and need. For example, one want to check the reliability of the application, plan the tests for more than 10 business days ( 8x10=80 hours). Analyze the requirements, system available, tools available to use etc. After the design of the performance test, decide on collecting the performance counters from the system where you are executing the performance test. Decide how you want to execute the tests and execute the tests for required time duration. Collect all the test results, performance counters to analyze the test results.
+Best practices in setting up load generators
+1) Ensure that you are able to ping the remote load generator from controller
+2) Load Generator is able to communicate with the AUT (Application Under Test)
+3) Ensure that the Load Generator is not used by any other load tests
+4) Do not use controller as a load generator
+5) Do not use any of AUT specific servers as a load generator
+6) Keep the load generators and controller within the firewall or keep both load generators and controller outside the firewall
+7) If one has to use the controller outside the firewall and load generator inside the firewall, then open the port of the firewall to communicate load generator with the controller
+8) Do not overload the load generators with many users
+9) Ensure that the load generators system resource utilization is within the acceptable limits
+10) Ensure that the load generator agent process is running on the load generators
+Why to parameterize load testing scripts
+To Resolve the issues like
+●	Data Dependency issues
+●	Date Dependency issues
+●	Caching issues
+●	Unique constraint issue
+Best practices for VuGen (LoadRunner) scripting
+1.	Keep Think times in the right place in the script
+2.	Keep Rendezvous point in the appropriate position
+3.	Place Think time, transaction and Rendezvous in a proper sequence
+4.	Create transactions with appropriate names
+5.	Selecting the appropriate method of fetching the data from a file
+6.	Parametrize the host name from run time settings
+Performance Testing Methodology
+According to the Microsoft Developer Network the Performance Testing Methodology consists of the following activities:
+1. Identify the Test Environment. Identify the physical test environment and the production environment as well as the tools and resources available to the test team. The physical environment includes hardware, software, and network configurations.
+2. Identify Performance Acceptance Criteria. Identify the response time, throughput, and resource utilization goals and constraints. In general, response time is a user concern, throughput is a business concern, and resource utilization is a system concern.
+3. Plan and Design Tests. Identify key scenarios, determine variability among representative users and how to simulate that variability, define test data, and establish metrics to be collected. Consolidate this information into one or more models of system usage to be implemented, executed, and analyzed.
+4. Configure the Test Environment. Prepare the test environment, tools, and resources necessary to execute each strategy as features and components become available for test. Ensure that the test environment is instrumented for resource monitoring as necessary.
+5. Implement the Test Design. Develop the performance tests in accordance with the test design.
+6. Execute the Test. Run and monitor your tests. Validate the tests, test data, and results collection. Execute validated tests for analysis while monitoring the test and the test environment.
+7. Analyze Results, Tune, and Retest. Analyse, Consolidate and share results data. Make a tuning change and retest. Improvement or degradation? Each improvement made will return smaller improvement than the previous improvement. When do you stop? When you reach a CPU bottleneck, the choices then are either improve the code or add more CPU.
+As a performance tester one must be aware of the significance of scripting in performance and load testing. There are many issues faced by a performance tester when he is just started with performance testing. The first problem that every performance test engineer faces is scripting. If he is done with the scripting, more than 50% problems are addressed.
+If one looks at the time allocated for scripting in the entire performance life cycle of the project or product, it is very minimal. May be max of 10 to 20% of the time may be allocated for scripting. But, the scripts play a significant role in evaluating the load test results. Unless the scripts are written properly, the load test results may not produce the expected results properly.
+Any concurrency, performance issues are reported to the developers they always suspect the scripting done in the respective performance and load testing tool.
+Let us see some of the best practices followed during the scripting:
+1.	Ensure that you have selected the right protocol / protocols for recording the test scripts.
+a.	Talk to architects to get the type of protocol used by the application for communication between the client and server / Servers.
+b.	Do not expect that the developer will be knowing the type of protocol / protocols used for communication between the client and server / Servers
+c.	Use protocol adviser feature (load runner supports) if your load testing tool supports
+2.	Select the right action for capturing the test script. Normally there are 3 types of actions or transactions supported by the performance tools
+a.	Begin or init – which will be used for initialization
+b.	Action or Main – which will be used for capturing the main activity of the script
+c.	End – which will be used for closing or destroying related operations
+d.	Assume that you are simulating an internal user of a organization (eg: customer support executive, who logs in the morning and performs the same task like working on credit card details and logs out at the end of the day) then you need capture login into INIT / BEGIN and main operations into ACTION / MAIN and logout operations into END action.
+e.	If the user is a organization customer (external user), then all the operations should be captured into the Action / Main.
+3.	Before recording ensure that all the persistence cache is cleared.
+a.	Ensure that all the cookies are deleted
+b.	Ensure that any temporary images or files respective the application is deleted
+Difference between Software Product and Project
+Software Project
+The below mentioned points will describe about the Software project:
+1.	The requirements are generally captured from the specific customer to build the project
+2.	Most of the cases the project requirements are freezed before the development
+3.	Hardware requirements clearly mentioned in most of the cases
+4.	Software source code is owned by the customer
+5.	Development costs are paid by the customer as service charge
+6.	Generally the duration of the project is well stated
+7.	Costs are fixed, on terms and conditions it may change
+8.	Development life cycle of the project is till the delivery
+9.	Conditional contract will be there for maintenance
+Software Product
+The below mentioned points will describe about the Software project:
+1.	The software products are built based on a concept or idea, requirements are gathered from multiple customers
+2.	Software products will be used to address the common problems of a business segment or common problems of more than one customer
+3.	Products are generally owned by the company which is building it
+4.	The product can be sold to multiple customers
+5.	Based on the size of the customer (Small, medium, large and extra large etc) the hardware requirements will be varying
+6.	Based on the existing Software owned by the customer, your product may need to support his software’s (eg: Operating systems, Database servers, and web servers etc)
+7.	Development life cycle of the product is till the product become obsolete.
+8.	Annual maintenance contract will be there for new versions support
+Performance Testing Vs Performance Engineering
+Performance Testing Vs Performance Engineering
+This section is to address the basic questions like
+What is performance testing?
+What is performance engineering?
+What are the dependencies and differences between performance testing and performance engineering?
+Are you doing just performance testing or engineering?
+Performance testing
+The performance testing is explained in the above section.
+Performance Engineering
+o	Performance Engineering is an ongoing activity throughout the Software Development Life Cycle.
+o	It encompasses the set of roles, skills, activities, practices, tools, and deliverables applied at every phase of the SDLC
+o	It will ensure that a solution will be designed, implemented, and operationally supported to meet the performance requirements defined for the application
+Objective of Performance Engineering
+•	Increase business revenue by ensuring the system can process transactions within the requisite timeframe
+•	Eliminate system failure requiring scrapping and writing off the system development effort due to performance objective failure
+•	Eliminate late system deployment due to performance issues
+•	Eliminate avoidable system rework due to performance issues
+•	Eliminate avoidable system tuning efforts
+•	Avoid additional and unnecessary hardware acquisition costs
+•	Reduce increased software maintenance costs due to performance problems in production
+•	Reduce increased software maintenance costs due to software impacted by ad hoc performance fixes
+•	Reduce additional operational overhead for handling system issues due to performance problems
+Activities performed as part of Performance Engineering
+•	Identify key development team members as subject matter experts for the selected tools
+•	Specify a profiling tool for the development/component unit test environment
+•	Specify an automated unit (component) performance test tool for the development/component unit test environment; this is used when no GUI yet exists to drive the components under development
+•	Specify an automated tool for driving server-side unit (components) for the development/component unit test environment
+•	Specify an automated multi-user capable script-driven end-to-end tool for the development/component unit test environment; this is used to execute screen-driven use cases
+•	Identify a database test data load tool for the development/component unit test environment; this is required to ensure that the database optimizer chooses correct execution paths and to enable reinitializing and reloading the database as needed
+•	Deploy the performance tools for the development team
+•	Presentations and training must be given to development team members on the selected tools
+Performance Testing Vs Functionality Testing
+Performance Testing:
+Performance Testing is designed to test the overall performance of the system at high load and stress conditions. Performance Testing occurs through out the software development life cycle to isolate performance related constraints. Even at unit level, the performance of the individual module may be assessed as the internal logic of software that is being tested.
+Functional Testing:
+Functional testing is conducted to verify the correctness of the operations of the software. The features and functions are tested before performance testing. The purpose is to verify that the internal operations of the product are working according to desired specifications. Functional testing typically tests accuracy of the application and how it behaves with different operating systems.
+Performance Testing		Functional Testing
+Main aim is to find the bottlenecks on the AUT	Main aim is to find the defects in AUT
+Responsiveness of the system can be measured	Functional defects can be identified
+Performance, scalability and reliability related issues can be identified	Funcational issues can be identified
+Performance Monitoring using Perfmon
+The PerfMon sample is an introduction to performance counters. It demonstrates how to monitor local or remote system performance. It shows how to dynamically create timers, context menus, and graphic displays. Follow the below mentioned steps to monitor the windows system performance counters
+1.	Open the Perfmon on Windows -> start ->run -> Open-> type "perfmon" and press enter
+2.	Expand Performance Log and Alerts
+3.	Select Counter Logs
+4.	Right Click on “Counter Logs” and Select “New Log Settings”
+5.	Enter the desired name for your machine (Web Server1 or App Server1 etc) for monitoring
+6.	Dialog pops up with the name you have mentioned
+7.	Select the General Tab
+8.	Give the optimum interval based on the based on the duration of the test
+9.	Click on Add Counters button
+10.	Select the Performance Object (Ex: Processor, System, Network etc.)
+11.	Select the counters from the list (Talk to Administrator of the respective admin team to identify the best required monitors)
+12.	Click on Add
+13.	Repeat the Step 8 to 11 till all the necessary counters are added
+14.	Select the Log Files tab on Server counters dialog
+15.	Select the log file as Text File (comma delimited)
+16.	Click on configure button if you want to change the log files location
+17.	Press OK Button on Configure Log Files dialo
+18.	Press OK
+19. Browse the folder (Default C:\Perfmon)
+20. Open the .csv file in excel format
+21. Generate the graphs and save as excel
+What is client side caching in performance testing?
+Overview
+The cache which happens on the browser client or web client is called client side caching.
+Especially in the web based applications the client side caching is required to conserve the bandwidth and improve access performance significantly. There are two types of caching happens on the client side, those are:
+1. Persistent cache
+2. Non persistent cache
+1. Persistent cache
+Persistent cache is also called as file cache. Persistent cache is going to store the intermediate files in the local hard disk of the browser. When you use the internet explorer browser to access any application in windows, these files will be stored in temporary internet files location,
+The type of files cached in persistence cache are .jpg, .gif, and many permanent cookies (like locally saved gmail and yahoo mail cookies) related files will be stored.
+How it works
+Before the browser sends the requests to the web server, first it will look into persistence cache.
+If the files are not found in persistence cache then, the browser will make a request to the web browser. Once the files are loaded from web server, it is going to store those files in persistence cache and displays on the browser.
+If the files are found in persistence cache, then browser will check the last modified date. If the last modified date of the file in persistence cache is matching with last modified date of the server, then it takes it from the persistence cache. Otherwise it loads the latest file from Web Server.
+Persistence cache will be there till you clear the cache or delete from the temporary internet files from your hard disk.
+2. Non Persistent Cache
+Non-persistence cache is called as browser temporary cache. Non-persistence cache is used for managing any secure temporary cookies, hidden parameters and sessions. Non-persistence cache will get cleared or deleted as soon as you close the browser.
+Non-persistence cache will create problems during the scripting time. Most of the dynamic server values like cookies and sessions will be there in non-persistence cache of the browser during the recording time. Since load testing tools record only the requests (will not capture response in the recorded script). There will be failures during the play back time. To resolve those issues, we parse the response and capture the server dynamic values in variables or parameters and pass it to the subsequent requests.
+ 
+Load Runner FAQ’s
+1.	Tell something about loadrunner?
+1) Loadrunner is the industry standard automated performance and load testing tool
+2) HP acquired LoadRunner as part of its acquisition of Mercury Interactive
+3) Using loadrunner one can emulated hundreds and thousand of virtual users for performance and load testing
+4) Loadrunner supports wide range of industry standard applications for load testing
+The key features of HP loadrunner are as follows:
+1. TruClient technology that simplifies and accelerates scripting for complex Rich Internet applications
+2. Enterprise load generation that applies measurable and repeatable loads while monitoring systems and end-user transactions to identify issues
+3. Powerful analysis and reporting capabilities that help isolate performance bottlenecks quickly and easily
+4.Integrated diagnostics help pinpoint the root causes of application-level issues down to the code level
+2.	What is a virtual user or VUser in loadrunner?
+Virtual user or Vuser emulates the real user steps. The real user steps are recorded a test script.
+During the recording time user steps (like posting the requests or accessing the pages) are recorded as test script. Whe the test script is played back the script is going to perform the user actions. The real user emulation by playing back the script is called virtual user or vuser.
+The vusers are created as a process or a thread in loadrunner for multiple users.
+3.	What is think time in loadrunner?
+Think time is nothing but the user delay between two subsequent requests.
+Assume that a user opened page1 and he is filling the data on page1. During filling the page the user has spent 10 sec, and he has submitted the page1, then page2 is loaded. In this case the user wait time between pag1 and page2 10 sec is called think time.
+4.	What is a transaction in loadrunner?
+Transaction is defined as response time of one or more than one user steps.
+Transaction in loadrunner is used for measuring the response time of user steps. If one has to measure the response time one or more than one page, the measure statements will be inserted at the appropriate pages.
+lr_measure_start("trans1")
+Step 1
+Step 2
+lr_measure_stop("trans1")
+lr_measure_start("trans2)
+Step 3
+lr_measure_stop("trans2)
+Step 4
+trans1 and trans2 are transaction names. Which will have the response times to measure periodically. And those response times will be displayed from the graphs in controller during the load test execution and those transaction response times can be analyzed from loadrunner analysis after load test execution.
+5.	What are the loadrunner components?
+Loadrunner has majorly 4 components
+1. Loadrunner VuGen - Virtual user generator - used for scripting purpose
+2. Loadrunner Controller - used for load test execution and monitoring purpose
+3. Loadrunner Load Generator - used for generating the load of multiple virtual users
+4. Loadrunner Analysis - used for analysis and reporting purpose
+VUGEN FAQ’s
+1.	What are the languages supported by loadrunner vugen?
+The languages supported by VuGen are:
+1) C Language
+2) Visual Basic Scripting
+3) Visual Basic For Applications
+4) Java Scripting
+The default language supported by VuGen is "C". All the above mentioned languages can be chosen based on the protocols.
+For example:
+1) COM/DCOM type of application supports all the above mentioned languages.
+2) Web (HTTP/HTML) supports only "C" language
+2.	How do you do scripting in loadrunner vugen?
+Scripting in loadrunner can be done in two ways
+1) By way of recording
+2) By writing the test script
+Recording is the mostly recommended ways of scripting. Since writing the test script involves lot of technical knowledge of the application and loadrunner scripting knowledge respective to the protocol or application.
+3.	How do you choose a protocol for conducting the load test in loadrunner vugen?
+Protocol or application type is used for scripting in loadrunner vugen. There are two ways deciding which type of protocol is used for scripting.
+1) By talking to the architects:
+2) By looking into the application design or architectural diagram
+3) By using the VuGen protocol adviser. But, protocol adviser is available from loadrunner 9.5 version onwards.
+4.	How to use protocol advisor in loadrunner vugen?
+Protocol advisor in loadrunner is available from version 9.5 onwards. Follow the below mentioned steps to get benefit of protocol adviser
+1) Open the VuGen
+2) Select File -> Protocol adviser -> Analyze Application
+3) Protocol Adviser dialog box pops up
+4) Select the application type and other application details and press "OK" button.
+5) Perform the user actions on the application, till all the major areas of the application flows are covered.
+6) Stop Analyzing
+7) Protocol adviser results will be displayed automatically
+5.	What are the recording modes available in web based recording in loadrunner vugen?
+To open the recording options go to
+1) File -> Tools -> Recording Options
+2) Recording Options dialog box opens
+3) Select Recording
+In web (HTTP/ HTML) based recording there are two modes available.
+1) HTML based script
+2) URL based script
+6. What is the difference between HTML and URL based script in loadrunner vugen?
+The basic difference between HTML and URL based script is:
+HTML based script - Generate a separate step for each user action. In addition, for requests whose origin is not basic HTML, record explicit requests.
+URL based script - Record all requests and resources from the server. Use, this mode to simulate the former URL-Based mode with all the resources recorded.
+HTML based script Is the default mode of recording in VuGen. This is recommended mode of recording. Since it emulates as a exact browser, when it comes sub urls computation.
+URL based script URL based we need to select explicitly from Recording Options. This mode of recording results in faster response than HTML based recording. The reason is, all the sub URLs are captured into the test script. So, the tool doesn't need to compute the sub urls like the browser does.
+6.	What are the default actions generated by loadrunner vugen?
+The default actions generated by loadrunner VuGen are:
+1) vuser_init
+2) Action
+3) vuser_end
+7.	How vuser_init, Action and vuser_end actions will be called in loadrunner vugen?
+vuser_init : vuser_init will be called only once at the beginning of the script execution for each virtual user. Most of the initiation operations are done with vuser_init action
+Action : Action will be called based the number of iterations mentioned in VuGen run time setting. Action will be iterated based the time duration mentioned in the controller. Till the controller time duration lapses action will be iterated.
+vuser_end : vuser_end will be called only once at the end of the script execution for each virtual user. Most of the closure operations are done with vuser_init action
+8.	How do you choose multi actions vuser_init, Action and vuser_end for recording in loadrunner vugen?
+Based on the type of the user emulation we choose the actions appropriately.
+If you are emulating a web end user of a business. Assume that you are emulating bank customer. Who will be using the web interface to interact with the application.
+vuser_init : Most of the initiation operations are done with vuser_init action. Here no user operations needs to be recorded.
+Action : Login into the application. Other user operations. And the logout operations will be captured into action.
+vuser_end : Most of the closure operations are done with vuser_init action. No operations are captured in this actions
+If you are emulating a client server or web internal user of a business. Assume that you are emulating bank customer. care executive or branch executive. Who will be using the client server or web interface to interact with the application.
+vuser_init : Most of the initiation operations are done with vuser_init action. We need to execute login only once if we are simulating a shift duration. Here login related operations needs to be recorded. Since the bank executives login only once in their shift.
+Action : All other bank executive repeated operations needs to be captured. And the login and logout operations should not be captured into action.
+vuser_end : Most of the closure operations are done with vuser_end action. Here login related operations needs to be recorded. Since the bank executives login only once in their shift. We need to execute only once if we are simulating a shift duration. Here logout related operations needs to be recorded. Since the bank executives logout only once after his / her shift.
+9.	What is the difference between qtp and loadrunner way of capturing the recorded test script?
+During the recording time, QTP captures the application events based on UI of the application. Whereas Loadrunner captures the application operations based on the protocol.
+Quick Test Professional (QTP): QTP captures the application events based on the Graphical user interface (GUI) objects. The objects will be captured in object repository and the operations on the objects will be captured in the test script as statements.
+The objects will be identified based on the type of the application. And the add-in installed with QTP respective to the application. Ex: If java based application to be recognized by QTP, java add-in should be installed with QTP.
+Loadrunner: Loadrunner captures traffic based on the protocol. Most of the applications in loadrunner are captured on the protocol. Loadrunner captures page submits, url posts especially when it comes to web based applications. If it is client server application, Loadrunner captures the traffic based on TCP/IP or ODBC etc type of protocols.
+10.	How do you add transactions in loadrunner vugen?
+Transactions in VuGen can be added Four ways:
+1) During recording, click on add start transactions and end transactions
+2) After recording from Enhancements section of Tasks.
+3) After recording from Tree view
+4) After recording from script view
+11.	Where do you check the transaction response time in VuGen?
+The transaction response time will be displayed after the play back of the script.
+And the response time will be displayed as part of the Replay log in output window.
+Note: If the output window is not opened. Select menu option View -> Output window
+12.	How can you pause the measurement to eliminate think time in loadrunner vugen?
+Assume that there is scenario mentioned below
+step 1
+lr_start_transaction(trans1)
+Step 2
+lr_think_time(30.3)
+step3
+lr_end_transaction(trans1)
+In the above case the think time of 30.3 sec will be coming as part of the measurement time. To eliminate the think time from the measurement we will be using the statements as mentioned below
+step 1
+lr_start_transaction(trans1)
+Step 2
+lr_stop_transaction(trans1)
+lr_think_time(30.3)
+lr_resume_transaction(trans1)
+step3
+lr_end_transaction(trans1)
+lr_stop_transaction - Freezes reporting of transaction data.
+lr_resume_transaction - Resumes reporting transaction data within a script.
+13.	What is the difference between lr_stop_transaction and lr_end_transaction in loadrunner vugen?
+lr_stop_transaction - Freezes reporting of transaction data.
+stop transaction normally followed by resume transaction. Stop transaction we use, if we want to freeze the timer and later we can resume it later
+lr_end_transaction - Marks the end of a transaction.
+End transaction is the closure of the transaction. End transaction we use, if we want to get the timer to be printed or reported to a monitor graph in controller or replay log in vugen.
+14.	What is wasted time in loadrunner VuGen?
+Wasted time is time spent on activities whose purpose is to support test analysis, but would never be performed by a browser user, for example, time spent keeping transaction statistics for later reporting. Wasted time is calculated internally by LoadRunner. Your script can also add wasted time with lr_wasted_time.
+Sometimes, you may enter activities in a script that your do not want reported as part of the transaction statistics. Generally, these are activities related to record keeping, logging, or custom analysis. If you enhance the script with steps whose durations should not be included in the test statistics, you can track the time used by these steps with lr_start_timer and lr_end_timer. Then, the function lr_wasted_time is used for adding this user-determined time to the internally generated wasted time.
+15.	How concurrency of user hits can be achieved in loadrunner?
+The concurrency of user hits can be achieved by using rendezvous points.
+Rendezvous point will be added from VuGen. But, the rendezvous point release settings can be made from controller to achieve the concurrency.
+16.	What is a rendezvous point in loadrunner?
+Rendezvous is used for achieving the concurrency during the load testing.
+When single user is run from VuGen rendezvous point never be triggered. As it is defined for only multiple users.
+Rendezvous point makes users to wait till the users mentioned in controller reach to a common step. When the rendezvous point releases the users are going to hit the system without any millisecond difference. The approach of hitting multiple users hitting at a common point is called concurrency
+17.	How can you add rendezvous points in loadrunner vugen?
+Before the rendezvous point added in the test script. One has to identify the appropriate step, where the rendezvous point needs to be added.
+Rendezvous points in vugen can be added in two ways:
+1) Add the rendezvous point from Tree View
+a) Select the step in tree view
+b) Select the Menu "Insert -> Rendezvous"
+c) Give the name of the rendezvous point
+2) Add the rendezvous point from the test script
+a) Select the step in script view
+b) Select the Menu "Insert -> Rendezvous"
+c) Give the name of the rendezvous point
+18.	Which of the cases rendezvous or concurrency point will be used in loadrunner?
+Rendezvous is used for generating the concurrency on the application under test.
+Concurrency hits will enable you identify the issues on any resource dependency.
+For example:
+1) If there are any thread dependencies in application server. Those errors can be detected only by simulating the concurrency hits on the application server.
+2) If there are any table accessing dependencies in the database, those can be detected by simulating the concurrency hits.
+19.	How does rendezvous point work in loadrunner?
+Rendezvous point works based on the settings given in controller scenario.
+The default setting for rendezvous point is - Release all the vusers when all running users reached to the rendezvous point. And the default time out period is 30 sec.
+For Ex:
+In the above case, if there are 10 users are running out of total 100 users. Assume that there are 4 vusers reached to the rendezvous point. The users who reached to the rendezvous point (4 vusers) are going to wait, till all the other running vusers (6 vusers) reaches to the rendezvous point. once all the 10 vusers reached to the rendezvous point, then the rendezvous for the waiting vusers will be released.
+If the users are taking more than 30 sec, then the rendezvous point for the waiting users will be released.
+20.	What is the best practice to keep transaction, think time and rendezvous point in loadrunner?
+Case 1:
+It is been recommended that the transaction, think time and rendezvous point should be in the following order
+1) think time
+2) rendezvous
+3) transaction
+Case 2:
+Let us see, what kind impact will be there if we make like the below mentioned order
+1) rendezvous
+2) think time
+3) transaction
+In the above case, if the think time comes after the rendezvous point. The concurrency may be last because of the random settings given in the run time settings for think times
+Case 3:
+Let us see, what kind impact will be there if we make like the below mentioned order
+1) rendezvous
+2) transaction
+3) think time
+In the above case, think time is going to come as part of the measurement time. which is not recommended. So the case 1 is one of the best practices of all.
+21.	How run time viewer or browser can be enabled in Loadrunner vugen?
+Run time viewer can be enabled in vugen with the below mentioned steps.
+From VuGen Menu options select
+1) Tools -> General Options
+2) General Options dialog opens
+3) Select Display tab
+4) Check "Show browser during replay" option
+5) Press OK button
+Now during the replay a run time viewer will be displayed, to see how the web users are sending requests and getting the responses
+22.	How Results can be viewed in Loadrunner vugen?
+Results can be viewed in vugen with the below mentioned steps, after the test script execution.
+From VuGen Menu options select
+1) View -> Test Results
+23.	How does recording work in Loadrunner vugen?
+Recording is nothing but capturing the user actions as test script.
+When the recording happens Loadrunner vugen, the capturing of the application events will be done through a communication channel, mostly by using a protocol based on the type of application.
+When the recording happens, VuGen captures the application traffic which goes a through a specific protocol like HTTP when it comes to web based applications
+When the recording happens, VuGen captures the application traffic which goes a through a specific protocol like ODBC, TCP/IP when it comes to client server based applications.
+When it comes citrix or RDC kind of applications, the events will be captured based on the screen positions. So, one have to be careful when the recording and play back happens on these kind of applications.
+24.	How does script play back work in Loadrunner vugen?
+When the script is played back, the requests will be posted on to the immediate server or servers on AUT. And the response will be returned by the server. The VuGen is going to wait till the complete response comes back. We normally do not add any specific synchronizations in VuGen scripting.
+VuGen validates the response based on the specific protocol codes. When it comes to web (HTTP / HTML) application, the response is validated based on HTTP codes.
+25.	Which are the types of files used for parameterization in loadrunner vugen?
+Any text based files used for parameterization in loadrunner VuGen, those files are:
+1) .CSV file
+2) .txt file
+3) .dat files
+27.	How can you use multicolumn data files for parameterization in vugen loadrunner?
+Follow the steps as mentioned below.
+1) Create a data file with multiple columns.
+2) Ensure that the data file must be .csv or .dat format.
+3) Open the parameter list from the menu option Vuser -> Parameter List
+4) Create a parameter
+5) Select the type of parameter as File
+6) Browse and select the multicolumn data file
+7) Map the parameter to the column name of the multicolumn data file
+8) Repeat step 4 to step 7, till you create all the parameters
+28.	How can you make one parameter column to be dependent on the other in vugen loadrunner?
+Follow the steps mentioned in 27. How can you use multicolumn data files for parameterization in vugen loadrunner? to create multiple parameters.
+Assume that there are two parameters (param1 and param2) created, and param1 is chosen with select next row as random. You want to make param2 to be read as same line as param1. Then you need to make param2 be dependent on param1.
+This can be done with the below steps
+1) Select the param2
+2) Select the next row as "same line as param1"
+29.	What are the types of parameterizations available in loadrunner vugen?
+The types of parameterizations available in loadrunner vugen are:
+1) File or Table Parameter Types
+i) Data Files
+ii) Data Tables
+2) XML Parameter Types
+3) Internal Data Parameter Types
+i) Date/Time
+ii) Group Name,
+iii)Iteration Number
+iv) Load Generator Name,
+v) Random Number
+vi) Unique Number
+vii) Vuser ID
+viii) Date / Time
+4) User-Defined Function Parameters
+30.	What is the significance of parameter simulation in loadrunner?
+Parameter simulation will be helpful to you, to understand how exactly controller is going to read the parameter values during the multiple vuser multiple iterations load.
+To open click on How can you open simulate parameter wizard from loadrunner vugen?
+The parameter simulation can be done with the below mentioned steps:
+1) Enter the number of users and iterations and click on simulate
+2) Now you can see how exactly, the users going to read a specific parameter.
+31.	What is the significance of offset parameter by in date type parameters in loadrunner vugen?
+Offset parameter by in date type will be used to increase or decrease the current and use it in the scripting.
+1) For example when you give offset parameter by 1 days. The resultant parameter will be substituted with current date + 1 day. This will be used for future dates.
+2) For example when you give offset parameter by 1 days. And checked the prior to current date, then the resultant parameter will be substituted with current date - 1 day.This will be used for past dates.
+32.	How do you use the number format for random numbers in loadrunner vugen?
+Number format for random numbers is used with %lu
+For ex: the parameter is used with %lu, then it is going to use exact number without any preceded zeros.
+If the parameter is used with %lu - then 1, 123 or 4444 etc. all the numbers of the parameters will be used as it is.
+For ex: the parameter is used with %08lu, then it is going to use exact 8 digits, if the number is lesser than 8 digits. For the additional digits the format will be filled with zeros. If the number is greater than 8 digits, then the same number without any additional digits will be used.
+33.	How do you add date format in loadrunner vugen?
+The date format can be added with the below mentioned steps.
+Use the link What are the date or time symbols available in loadrunner vugen? to know more about date format symbols
+Once you learn about the symbols, you an follow below steps to add the date format. Assume that you want to create a date format of type month/date/year like 05/25/2011 (May 25, 2011) then how do you add? If you look into any of the existing formats, those will not satisfy you requirement.
+Follow the steps:
+1) Open the parameter list
+2) Create a new parameter
+3) Select the parameter type as Date / Time
+4) Enter "%m/%d/%Y" in Date / Time format text field
+5) Click on add format
+From the above format you can re-use the same for any new date parameter.
+34.	What is difference between each occurrence, each iteration, and once for updating the value in loadrunner vugen?
+Each occurrence, each iteration, and once for updating the value options will be used for updating parameter value during the vuser execution.
+each occurrence: Each time the parameter called in the script, a new value gets generated within each iteration
+each iteration: For each iteration a new parameter value generated. If more than one occurrence is there is the script, within the iteration parameter value will be fixed.
+once: For the entire test run, single parameter value will be generated. All the iterations and all the occurrences will be having fixed value
+35.	What are the modes available to choose the next row, when the parameter type is chosen as file in loadrunner vugen?
+The modes available to choose the next row, when the parameter type is file:
+1) Sequential
+2) Random
+3) Unique
+4) Same line as <other parameter name>, if there is more than one file type parameter is there
+36.	When do you use same line as ‘parameter name’ to select the next row in multicolumn data file in loadrunner vugen?
+We use Same line as <paramrter name>, if there is more than one file type parameter is there.
+Assume that there are two parameters pUName, pPwd. U are reading these parameter values from a file. You want to read the values from a file randomly.
+If you read both pUName, pPwd parameters randomly. Since both the parameters are independent random parameters, though they are pointed to a single file. To make them dependent we need to choose pUName as Select next row as random and for pPwd Select next row as as same line as pUName
+37.	Why simulate parameter is not possible for a dependent parameter in loadrunner vugen?
+The simulate parameter is not possible for a dependent parameter.
+The simulate parameter is possible for the parameter which is chosen as
+1) Sequential
+2) Random
+3) Unique..
+If the parameters is dependent with same line as the other parameter. The other parameter line will be come the parameter value of the dependent parameter. So, the simulate parameter is not possible for a dependent parameter.
+38.	What are the types of check points supported by loadrunner vugen?
+There are two types of check points supported by LR VuGen.
+1) Text check points. The functions used for the text check are:
+a) web_find
+b) web_reg_find
+2) Image check point. The function used for the image check is: web_image_check
+39.	How do you enable text and image checks in loadrunner vugen?
+The image and text check, with the functions web_find and web_image_check will be executed only when the proper run time settings are set. Follow the below steps to do that
+1) Select Menu Vuser -> Run Time Settings (or press F4)
+2) Run-time Settings Dialog box opens
+3) Select preferences in the left frame
+4) Enable the Image and text check box
+40.	What is the difference between web_find and web_reg_find?
+web_find: web_find will be processed after the response of the request comes. So, this function will be there after the request in VuGen script.
+web_reg_find:web_reg_find will be processed before the request sent. And the check value will be checked in the response of the specific request. Thats the reason this function will be there before the request in VuGen script.
+41.	What are the arguments taken by image check point in loadrunner?
+We can pass maximum two arguments to image check point. Those are:
+src Image server file name. In the source code of the web page you can see the src attribute value. Keep the value of src for verification.
+alt Alternative Image Name. In the source code of the web page you can see the alt attribute value. Keep the value of alt for verification.
+42.	What is an additional attribute in loadrunner vugen?
+Additional attribute is a run time setting in VuGen and controller in loadrunner. This is used for reading a attribute value from run time settings.
+This will be helpful, to pass any value to the test script from run time settings. This will overcome the limitations of parameters in VuGen. The parameters can be read and edited from the VuGen script only. Cannot be edited from controller.
+If you want pass some value to the script from controller, we use additional attributes. Since additional attributes are part of run time settings, so it can be passed from controller. But there should be corresponding functions written in VuGen script to read the values.
+43.	How can you retrieve the additional attribute values from run time settings in loadrunner vugen?
+The additional attribute values from run time settings in vugen can be retrieved using the function lr_get_attrib_<type of attribute>.
+If you are retrieving the string type of attribute you use lr_get_attrib_string. The complete syntax for retrieving the value of a attribute in a string will be written as
+Define the variable sHostName.
+char* sHostName;
+sHostName = lr_get_attrib_string("aHostName");
+Note: Here the aHostName is the additional attribute name, defined in run time settings.
+44.	What is the function used for converting the string variable value to a parameter in loadrunner vugen?
+Using the variables directly in the VuGen test script is little difficult. It involved lots of coding. So, to avoid using the variable values directly in test script, we convert the variable values to a parameter and use them directly in test script.
+Converting the string variable value to a parameter in loadrunner vugen can be done with lr_save_<type of variable >
+if you converting the string variable to a parameter use lr_save_string(sHostName, "pHostName")
+Note: in the above case sHostName is a variable and pHostName is a parameter.
+45.	What is the function used for converting the parameter value to a string value in loadrunner vugen?
+The function used for converting the parameter value to a string value in vugen is lr_eval_< data type>
+if you want to convert the parameter value to a string we use as follows
+sHostName = lr_eval_string("{pHostName}");
+Note: In this case sHostName is a variable
+pHostName is a parameter
+46.	What is the command used for printing the values to replay log in loadrunner vugen?
+The command used for printing the values to replay log in vugen is lr_output_message. The usage is as follows
+lr_output_message("Th value is :%s", val1);
+Note: val1 is the string type variable, %s is the string format as in C language
+47.	What is the difference between lr_output_message and lr_error_message?
+lr_output_message :
+1) Used for printing the output value in the replay log as a message.
+2) No info will be displayed in verify replay view.
+3) Used for displaying any parameter or variable values
+lr_error_message :
+1) Used for printing the output value in the replay log as an error message.
+2) The error message can also seen from verify replay view.
+3) Used for displaying any parameter or variable values with a error message
+48.	What is the difference between attribute, variable and parameter in loadrunner vugen?
+attribute :
+1) Additional attribute will be read from the run time settings of controller or VuGen.
+2) We can pass the values to VuGen test script from the run time settings.
+3) When you you change the value of the additional attribute, you do not have recompile or restore the test script in controller.
+variable :
+1) Variable will be defined in VuGen, based on the C data type.
+2) Variable will be used for capturing any run time values or function return values.
+3) When you change the value of the variable in the script, you have to recompile or restore the test script in controller.
+parameter :
+1) Parameter will be defined in VuGen to store parsed response results for server dynamic values like user session id, item id which are automatically generated by the server .
+2) Parameter will be used in the subsequent requests to successfully play back the script with captured dynamic server values .
+3) When you change the parameter settings, you have to recompile or restore the test script in controller.
+49.	What is run logic in loadrunner?
+Run logic is used for executing the test script flow. Using run logic you can define
+1) how many times the action to be iterated
+2) You can also define a block
+3) Inside the block, the way the actions sequence flow can be defined.
+4) The action weight can be defined based on the percentage in a block for multiple actions
+50.	How do you control the sequence of action execution and repetition in loadrunner?
+The sequence of action execution and repetition in loadrunner can be done by using the run logic from run time settings of loadrunner.
+1) Mention the number of iterations for Action.
+2) You can also define a block
+3) Inside the block, the way the actions sequence flow can be defined.
+4) The action weight can be defined based on the percentage in a block for multiple actions
+51.	What is pacing and why do you use pacing in loadrunner?
+Pacing is used for wait time between the action iterations.
+Your customer says that he needs 600 user sessions to be created with max of 100 users in 1 hour. And script execution takes around 30 Sec. To simulate this scenario, you can give a pacing setting as follows.
+600 user sessions with 100 users -> so total number of iterations would be -> 6 per user
+6 iterations in 1 hour -> so the session duration would be -> 60/6 = 10 min per user session.
+So you need to select the setting-> Start new Iteration at "Fixed" intervals 600 sec. provided the previous iteration ends by that time.
+52.	What are the options available in pacing in loadrunner?
+As soon as the previous iteration ends. The new iteration begins as soon as the previous iteration ends.
+After the previous iteration ends with a fixed or random delay of ... Starts each new iteration a specified amount of time after the end of the previous iteration. Specify either an exact number of seconds or a range of time. For example, you can specify to begin a new iteration at any time between 100 and 150 seconds after the previous iteration ends.
+When you run the script, VuGen shows the time the Vuser waited between the end of one iteration and the start of the next one, in the Execution Log.
+At fixed or random intervals, every ... [to ...] seconds. You specify the time between iteration—either a fixed number of seconds or a range of seconds from the beginning of the
+53.	How do you enable extended logging in loadrunner?
+To enable extended logging in loadrunner, follow the below steps mentioned :
+1) Select Menu option Vuser -> Run-time settings
+2) Run-time settings dialog pops up
+3) Select the Log from left frame in the dialog
+4) Ensure the "Enable Logging" is checked
+5) Select the radio button "Always send message"
+6) Select the radio button "Extended Log"
+54.	What are the options available in extended log and why do you use them in loadrunner?
+The options available in extended log are:
+a) Parameter substitution:
+Parameter substitution should be enabled, if you want the parameter and it values to be displayed in the log during the run time.
+b) Data returned by server:
+During the replay, if you want to see the Request headers, Response header and response body in replay log enable this option.
+c) Advanced trace:
+During the replay, select this option to log all of the functions and messages sent by the Vuser during the session. This option is useful when you debug a Vuser script.
+55.	What are the disadvantaged of using extended logging when the load test is long duration in loadrunner?
+The disadvantaged of using extended log when the load test is long duration in loadrunner controller:
+When the log is enabled the response times get skewed. Because of
+1) high data on the load generators
+2) High disk reads and writes on load generators
+3) the high network resource consumption
+Assume that for single user, when the test script runs for one iteration the log generated on the disk is 1MB.
+When the load test is running for 1000 users for 10 iterations the log size is going to be around 10GB.
+If the load test is extended for 1000 users for 1000 iterations the log is going to be 1TB.
+Hope now you understood the size of the log. So we enable the log only if it is required.
+We may use extended log when very few users are running the system.
+56.	Why do you need to enable standard log when the test script is running in loadrunner vugen?
+See the article with high data usage:What are the dis advantaged of using extended logging when the load test is long duration in loadrunner?
+To overcome the disadvantages of high data usage, we set the log to standard log.
+57.	What are the optimum settings to do logging, when the load test is long duration in loadrunner?
+When the load test is long duration, we set the log level to very minimal or no log.
+Mostly we set the log level to standard log. We also select the radio button "Send message only when an error occurs"
+With the above setting the log will be generated only when error occurs. And we need to analyze the erroneous pages. So this is the optimum selection for the log, when the load test is very long duration
+58.	Why do you ignore think times when you are running from loadrunner vugen?
+Ignore think time is the default setting in VuGen Run-tiime Settings.
+When you run the test script from VuGen, you are debugging a test script or enhancing the script. In that case you do not have to simulate the think times. Because, you do not want to spend more time during running the script.
+59.	Why do you replay think times when you are running the tests from loadrunner controller?
+We use the think times, when run the tests from load runner controller for multiple users.
+The reason is we always want to simulate the users as they are working in real time. The real time users normally wait between the user actions, for understanding the content on the page or for filling the data on the pages. Since the user wait time between the requests is captured as think time. The think time need to be used during the actual load test. If we use the think time, the test run will be near to the real users activity. If we do not use the think time, it will become a stress test.
+60.	What are the options available to replay think times in loadrunner?
+the options available to replay think times in loadrunner are as follows
+Ignore think time. Ignore the recorded think time—replay the script ignoring all lr_think_time functions.
+Replay the think time. The second set of think times options let you use the recorded think time:
+As recorded. During replay, use the argument that appears in the lr_think_time function. For example, lr_think_time(10) waits ten seconds.
+Multiply recorded think time by. During replay, use a multiple of the recorded think time. This can increase or decrease the think time applied during playback. For example, if a think time of four seconds was recorded, you can instruct your Vuser to multiply that value by two, for a total of eight seconds. To reduce the think time to two seconds, multiply the recorded time by 0.5.
+Use random percentage of the recorded think time. Use a random percentage of the recorded think time. You set a range for the think time value by specifying a range for the think time. For example, if the think time argument is 4, and you specify a minimum of 50% and a maximum of 150%, the lowest think time can be two (50%) and the highest value six (150%).
+Limit think time to. Limit the think time's maximum value.
+61.	Which of the cases you create the virtual users as process or thread?
+Thread
+1) if you run each Vuser as a thread, the Controller launches only one instance of the driver program (such as mdrv.exe), for every 50 Vusers (by default). This driver process/program launches several Vusers, each Vuser running as a thread. These threaded Vusers share segments of the memory of the parent driver process. This eliminates the need for multiple re-loading of the driver program/process saves much memory space, thereby enabling more Vusers to be run on a single load generator.
+2) The main advantage of a multi thread environment is the ability to run more Vusers per load generator.
+3) Only thread safe protocols should be run as threads.
+Process
+1) If you run each Vuser as a process, then the same driver program is launched (and loaded) into the memory again and again for every instance of the Vuser. Loading the same driver program into memory uses up large amounts of RAM (random access memory) and other system resources. This limits the numbers of Vusers that can be run on any load generator.
+2) The protocols Sybase-Ctlib, Sybase-Dblib, Informix, Tuxedo, and PeopleSoft-Tuxedo are not thread safe, so need to run as process
+62.	Why do you use speed simulation in loadrunner?
+We use the network speed simulation in loadrunner for limiting the bandwidth usage.
+Assume that your LAN is having 10Gbps bandwidth. And, if the real users is using 128 Kbps in real time. If you want to simulate such user behavior we need to limit the network usage, by way of limiting the speed simulation.
+63.	How do you emulate browsers in loadrunner?
+Emulate browsers is nothing but emulating the browser settings during the load test execution. Since the load runner is not going to use the actual browser, the browser setting will be emulated based on the settings provided.
+Follow the steps to emulate the browser settings:
+1) Open the menu option Vuser -> Run-time Settings
+2) Run-time Settings Dialog box opens
+3) Select Browser Emulation from left navigation
+4) Click on Change button
+5) User Agent Dialog box opens
+6) Choose your browser with version and OS
+64.	How do you set proxy settings in loadrunner?
+If you have proxy to communicate with any external sites. We may need to configure the proxy settings in the broswer for recording.
+Since the loadrunner does not use the browser during replay. We need to give the proxy settings in the run time settings of the controller or VuGen. Then the requests will be sent through the proxy.
+Follow the steps to emulate the browser settings:
+1) Open the menu option Vuser -> Run-time Settings
+2) Run-time Settings Dialog box opens
+3) Select Proxy settings Emulation from left navigation, under Internet Protocol
+4) Select the custom proxy
+5) And give the settings as required
+What are the date or time symbols available in loadrunner vugen?
+The following table explains about the date/time symbols:
+Symbol	 Description
+c	complete date and time in digits
+#c	 complete date as a string and time
+H	 hours (24 hour clock)
+I	 hours (12 hour clock)
+M	 minutes
+S	 seconds
+p	 AM or PM
+d	 day
+m	 month in digits (01-12)
+b	 month as a string - short format (e.g. Dec)
+B	 month as a string - long format (e.g. December)
+y	 year in short format (e.g. 03)
+Y	 year in long format (e.g. 2003)
+What will be captured in the test script while recoring in loadrunner vugen?
+During the recording time, only the requests will be captured into the test script.
+When the script is seen from the tree view in web based application, the response pages corresponding to the request node can be seen. But the responses are not part of the test script. The response for the requests is captured as part of the recorded log, which will be there in the data folder inside the test script folder.
+Which are the types of files or data sources or connections not recommended for parameterization in loadrunner vugen?
+The types of files not recommended for parameterization in loadrunner vugen are:
+1) .xls
+2) .mdb
+3) database connection or data source
+The above two files requires driver for reading the data. Which will become heavy for each virtual users. So, that is why load runner is not been implemented with .xls and .mdb file support.
+Database connection is not recommended for parameterization. When one does the parameterization using database connection in the test script. Each virtual user is going to connect to the database, to fetch the data for parameterization. So, there are one dedicated connection is wasted just to fetch the data from database. And the same virtual user is going to hit through the application as well.
+The database connection is an resource consuming operation. So, it is not recommended to have a parameterization directly with database in load testing.
+CONTROLLER FAQ’s
+1.	Why do you choose loadrunner as your load testing tool?
+Loadrunner is the industry standard automated load testing tool. There are many reasons behind choosing the loadrunner for load testing, few them are listed as follows.
+1) Easy to use tool
+2) Learning curve for a beginner is very low compared with the other tool
+3) Vast variety of application and protocol support
+4) Scripting is very easily done by using VuGen
+5) The load test can be designed exactly similar to realistic loads tests using manual scenarios
+6) The load tests can also be designed based on the goals of the customer, by way of goal oriented scenarios
+7) The service level agreements or objectives can be set and will be evaluated during the load test analysis phase
+8) The results can be easily analyzed and comparison graphs and reports can be generates using analysis component
+9) The loads can be generated using different remote load generators with more number of users by way multiple thread mechanism
+10) Support from HP is good.
+11) There is lots of online help and forums available for any issues
+12) The resources for loadrunner is also easy to get in the industry
+2.	What are the types of load testing or performance testing will be done using loadrunner?
+The types of load testings supported by loadrunner are:
+Load Testing: By using the loadrunner the load test can be simulated for multiple simultaneous users, similar to realistic number of users.
+Endurance / Longevity / Soak Testing: By using the loadrunner the load test can be simulated for longer durations
+Stress Testing: By using the loadrunner the load test can be simulated with multiple users till the stress point reaches with incremental increase in the number of users.
+Spike Testing: By using the loadrunner, during the load test execution spikes can introduced by way of adding the number of users.
+Capacity Testing: Using loadrunner systems capacity can be tested for the future incremental in business. For example, if the current AUT system configuration supports 1000 users. Due to the expansion in business, if the number of users are increased to 10000. Does the existing environment supports or any new systems to be procured. The decision can be taken by way of conducting the load tests using load runner.
+Scalability Testing: Scalability can be compared using some of the auto generated graphs, like average response times under load.
+3.	What are the scenario types available in loadrunner controller?
+The scenario types available in loadrunner controller are:
+1) Manual scenario
+2) Manual scenario by percentage
+3) Goal oriented scenario
+4.	What is Goal Oriented scenario in loadrunner controller?
+Goal Oriented scenario is one type of load test scenario in controller.
+Goal Oriented scenario is used for creating the scenario based on the customer expected objectives.
+For example: if the customer wants to achieve the 100 hits per second with variable number of users like minimum number of users 50 and maximum number of users 150. Then you may need to select the type of load test as goal oriented.
+Normally the goal oriented scenario should be executed for long durations to achieve the customer goals or objectives.
+5.	What is manual scenario in loadrunner controller?
+Manual scenario is one of the types of load runner scenarios. This will be used for simulating the real time load tests.
+The manual scenario can be built by creating groups and specifying the script, the load generator, and the number of Vusers included in each group
+6.	What is the difference between manual scenario and goal oriented scenario in loadrunner controller?
+Manual scenario	Goal oriented scenario
+Used to simulate the real time loads based on the fixed time and fixed number of virtual users	Used for simulating the load, based on the objectives defined by the customer expected objectives like HTTP hits, transactions per sec and transaction response time etc.
+The duration is fixed. Since the time clearly defined in real world scehdules	The duration is always much more than the duration mentioned in goal oriented scenarios. Since the goal will be achieved after the mentioned time
+Acceleration and deceleration of the users will happen based on the schedule design	Acceleration and deceleration of the users will happen automatically, based on the goal defined
+7.	When to choose goal oriented scenario or manual scenario in loadrunner controller?
+Goal oriented scenario:
+The goal oriented scenario is selected, only when you want to simulated the customer objectives or goals like HTTP hits per second or transactions per second or transaction response time.
+Manual scenario:
+Manual scenario will selected when you want to simulate the number of virtual users according to the real time load behavior of the users.
+8.	How the new goal profile will be created in goal oriented scenario using loadrunner controller?
+The new goal profile will be created by following the below mentioned steps:
+1) From controller Select menu option File -> New
+2) New Scenario Dialog box pops up
+3) Select the goal oriented scenario radio button
+4) Add the appropriate scripts
+5) Click OK button
+6) New scenario opens in the controller
+7) Click on "Edit scenario goal" button in scenario goal
+8) Edit scenario goal pops up
+9) Click on New button
+10) New Goal profile dialog opens
+11) Enter the name and press OK
+12) Now, you can set the new profile settings
+9.	What are the types of goals can be defined from goal oriented scenario in loadrunner controller?
+To define Scenario Goal, we choose different types of goals based on the customer given objectives for the load test.
+There are 5 types of goals available. Select the type of goal you want for the scenario.
+Pages per Minute (for Web Vusers only). Enter a target number of downloaded pages per minute that you would like your scenario to reach, and select a minimum and maximum number of Vusers for the scenario.
+Virtual Users. Enter a target number of virtual users that you would like your scenario to reach.
+Hits per Second (for Web Vusers only). Enter a target number of hits per second (HTTP requests per second) that you would like your scenario to reach, and select a minimum and maximum number of Vusers for the scenario.
+Transactions per Second. Enter a target number of transactions per second that you would like your scenario to reach, and select a minimum and maximum number of Vusers for the scenario.
+Transaction Response Time. Enter a target transaction response time that you would like your scenario to reach, and select a minimum and maximum number of Vusers for the scenario.
+10.	What are the options are there to choose the load behavior ramp up in goal oriented scenario in loadrunner controller?
+Using the load behavior tab, you can set when the ramp up to achieve the goal.
+The ramp up can be set in three ways
+Automatic. Instructs the Controller to run the default number of Vusers in a batch. Controller starts with the minimum number of Vusers. And runs for two minutes. If the goal is not achievable, the scenario automatically increases the users to achieve the goal.
+Reach target X after. Select the amount of scenario time you want to elapse before the Controller reaches your target. This is the minimum time you have given. The controller takes much larger time than mentioned here.
+Step up by (not available for the Transactions per Second and Transaction Response Time goal types). Select the gradation according to which you want the Controller to reach your target (x number of virtual users/hits/pages every x amount of time).
+11.	How the number of hits will grow, even if the maximum number of users is running in goal oriented scenario in loadrunner controller?
+There is a check box Do not change recorded think time in Edit scenario goal. If it is not checked, the controller will minimize the think time, and runs the load test. So, due to reduction in think time the frequency of the hits will increase.
+Note: If you select this option, you may need to increase the number of Vusers in your scenario in order to reach your target
+12.	On what basis acceleration or deceleration of users will happen in goal oriented scenario in loadrunner controller?
+Goal oriented scenario scenarios will execute based on the goals defined. The main objective of the goal oriented scenario is to maintain the goal throughout the load test execution.
+For example: You are running goal oriented scenario with the goal of 100 hits per second, with minimum number of users as 50 and maximum number of users as 150. If the actual hits per second is coming around 75, when the load test is running with 50 users, then the controller automatically increases the number of users based on the required hits. When the number of hits are above the goal, then the number of users will be decreased accordingly
+13.	What are the options can be chosen if the load target is not reachable in loadrunner controller?
+During the goal oriented scenario profile creation, you have to select the appropriate option for continuation or termination of load test, if the goal is not achievable.
+There are two options available to choose for non-achievable goals:
+Stop scenario and save results. Instructs the Controller to stop the scenario and save the scenario results, if the target you defined cannot be reached.
+Continue scenario without reaching goal. Instructs the Controller to continue running the scenario, even if the target you defined cannot be reached.
+If you want to get notified during the goal oriented scenario, if the goal is not reachable. Select the option
+Receive notification. Instructs the Controller to send you an error message indicating that the target cannot be reached.
+14.	What is load generator in loadrunner controller?
+Load generator Load generator is a component of loadrunner. Load generator is used for creation of the virtual users.
+15.	How do you add load generator to a scenario in loadrunner controller?
+Load generators can be added to controller with the below mentioned steps.
+1) Select the menu option "Scenario -> Load generators" in controller
+2) Load generators dialog box opens
+3) Click on Add button
+4) Enter the name or ip address of the load generator
+5) Select the platform Windows or UNIX
+6) Enter the temporary directory
+7) Click OK button
+16.	Which are the operating systems supported by load generator in loadrunner controller?
+The operating systems supported by load generator are:
+1) Windows
+2) UNIX
+17.	Where the load generator results will be stored during the load test execution in loadrunner?
+If you have not mentioned the temporary folder for load generator, the results will be stored in the mentioned folder.
+Otherwise, the load generator is going to store the results in the temporary folder in the current user profile as:C:\Documents and Settings\<user name>\Local Settings\Temp\.
+To see the actual folder, open the load generator details, and see the temporary folder to get the actual folder name with full path.
+18.	How do you check, whether the load generator is ready to use in loadrunner controller?
+Load generators can be added to controller with the below mentioned steps.
+How do you add load generator to a scenario in loadrunner controller?
+To check the load generators
+1) Select the load generator and click on connect
+2) Observe the status of the load generator
+3) If the load generator status is ready, that means the load generator can be used for execution of the load test
+4) If the load generator status is failed, that means that load generator is not ready for execution
+19.	What is a group in loadrunner controller scenario?
+The group is combination of VuGen test script, number of virtual users and the load generator.
+Each group can also be associated with its own run time settings.
+20.	Can you create more than one group with the same script in loadrunner controller?
+Yes, the same script can be used part of the multiple groups.
+Click on Add group from the controller scenario. When you choose same script from the test script list, every time you add the test script, load runner generates different name for the group by suffixing a number. You can change the name of the group while adding the test script.
+21.	How can you associate load generators with the groups in loadrunner controller scenario?
+In the scenario group section there is a load generator group column.
+Associate each of the load generator with each group.
+22.	How to add a group in loadrunner controller scenario?
+A group can be added to the scenario with the below mentioned steps:
+1) Click on Add group button
+2) Enter the name of the group
+3) Enter the number of Vusers quantity
+4) Select the load generator
+5) Select the script to be part of the group
+6) Press OK
+Now your new group has been added to the scenario
+23.	How to delete number of users from a group in loadrunner controller scenario?
+Users from a group can be deleted with the below mentioned steps:
+1) Select the group from the controller scenario
+2) Click on the vuser group button
+3) Select the number of users needs to be deleted
+4) Press the Delete key from your keyboard
+24.	How do you check single user execution on a specific load generator in loadrunner controller?
+A single user can be executed on a specific load generators with the below mentioned steps:
+1) Select the group from the controller scenario
+2) Click on the vuser group button
+3) Select the Vuser, the vuser could have been pointed to the script and load generator
+4) Click on run button. The selected vusers will be executing
+25.	How the rendezvous option will be enabled in loadrunner controller scenario?
+Enable Rendezvous/Disable Rendezvous : Enables or disables the selected rendezvous points from participating in the scenario.
+The rendezvous option will be enabled or disabled with the below mentioned steps:
+1) Open the controller scenario
+2) Select the menu option scenario -> Rendezvous...
+3) Rendezvous Information dialog box opens
+4) Select the name of Rendezvous point
+5) Click on Enable (or Disable) Rendezvous button
+26.	What are the options available in rendezvous policy in loadrunner controller?
+Policy.
+Opens the Policy dialog box, enabling you to set how many Vusers are released from a rendezvous at a time, as well as the amount of time the Controller waits before releasing Vusers from a rendezvous.
+The options are:
+1) Release when 100% of all vusers arrive at the rendezvous
+2) Release when 100% of all running arrive vusers at the rendezvous
+3) Release when number of vusers arrive at the rendezvous
+27.	How do you set the time out period in rendezvous point in loadrunner controller?
+Timeout. Enter the timeout value (in seconds). After each Vuser arrives at the rendezvous point, LoadRunner waits up to the number of timeout seconds specified for the next Vuser to arrive. If the next Vuser does not arrive within the timeout period, the Controller releases all the Vusers from the rendezvous. Each time a new Vuser arrives, the timer is reset to zero. The default timeout is thirty.
+Timeout is set based on the execution time of the virtual users.
+28.	How can you enable or disable rendezvous point in loadrunner controller?
+Enable Rendezvous/Disable Rendezvous : Enables or disables the selected rendezvous points from participating in the scenario.
+The rendezvous option will be enabled or disabled with the below mentioned steps:
+1) Open the controller scenario
+2) Select the menu option scenario -> Rendezvous...
+3) Rendezvous Information dialog box opens
+4) Select the name of Rendezvous point
+5) Click on Enable (or Disable) Rendezvous button
+29.	How can you set scenario start time in loadrunner controller?
+Scenario start time can be set with the below mentioned steps
+1) Open the manual scenario
+2) Click on Start time button on Scenario Schedule
+3) Enter the start scenario time
+a) without a delay
+b) with a delay of
+c) at a specific time
+30.	What are the types of scenario schedules available in loadrunner controller scenario?
+There are two types of schedules available in scenario. Those are
+1) Schedule by scenario
+schedule the scenario to start running at a specified time. You can limit the execution duration of the scenario or of a Vuser group within the scenario.
+You can also stipulate how many Vusers to start and stop running within a certain time frame. You can specify whether LoadRunner should start or stop running all Vusers in a scenario simultaneously, or only a certain number of Vusers within a specified amount of time.
+2) Schedule by group
+For each enabled Vuser group in a scenario, you can design a separate execution schedule. You can specify when to start running the Vuser group, how many Vusers to start and stop running within given time intervals, and how long the Vuser group should continue running.
+31.	What are the types of run modes available in loadrunner controller scenario schedule?
+Scenario creation types can be seen with the link What are the types of run modes available in loadrunner controller scenario schedule?
+For each of the above, the run modes are:
+1) Run by Real word schedule
+The scenario runs according to a user-defined group of actions that simulate a real-world schedule of events. Vuser groups run according to the iterations defined in their run-time settings, but you can define how many Vusers to run at a time, how long Vusers should continue to run, and how many Vusers to stop running at a time.
+2) Run by Basic schedule (or until complete in older versions)
+All enabled Vuser groups run together on one schedule, each according to its own run-time settings. You can schedule how many Vusers to start running at a time, how long to run the Vusers, and how many Vusers to stop running at a time.
+32.	What are the actions available in loadrunner controller scenario global schedule?
+The actions available in loadrunner controller scenario are:
+1) Start Group The Start Group action defines when to start running a Vuser group. This action is available for group schedules only.
+Note: By default, the Start Group action appears as the first action in the Actions grid when you select Schedule by: Group. It is always followed by the Initialize action. It cannot be deleted.
+2) Initialize
+The Initialize action instructs LoadRunner to prepare the Vusers so that they are in the Ready state and can run.
+Note: By default, the Initialize action appears in the Actions grid for all schedule types. It cannot be deleted.
+3) Start Vusers
+The Start Vusers action instructs LoadRunner to start running Vusers.
+4) Duration
+The Duration action instructs LoadRunner to continue running the scenario in the current state, for the specified amount of time.
+5) Stop Vusers
+The Stop Vusers action instructs LoadRunner to stop the running Vusers.
+33.	What are the options available in loadrunner controller scenario initialize action of global schedule?
+Thu, 05/26/2011 - 20:14
+The options available in loadrunner controller scenario are:
+Initialize all Vusers simultaneously
+LoadRunner initializes all the Vusers in the scenario or selected Vuser group together, before running them.
+Initialize XX Vusers every <00:00:00> (HH:MM:SS)
+LoadRunner initializes the specified number of Vusers gradually before running them, according to the specified time interval (in hours, minutes, and seconds).
+Initialize each Vuser just before it runs
+(Default) LoadRunner initializes each Vuser in the scenario or selected Vuser group just before it starts running.
+Note: The above option is not available for Group schedules when the Wait for all groups to initialize option is selected. See Initializing All Vuser Groups Before a Run.
+34.	What are the options available in loadrunner controller scenario start vusers action of global schedule?
+Start XX Vusers: Simultaneously (Default)
+LoadRunner runs the specified number of Vusers simultaneously
+Start XX Vusers: YY Vusers every <00:00:00> (HH:MM:SS) LoadRunner runs the specified number of Vusers (XX) gradually. That is, LoadRunner runs YY Vusers, and waits the specified time (in hours, minutes, and seconds) before running another YY Vusers.
+35.	What are the options available in loadrunner controller scenario duration action of global schedule?
+Run until completion
+The scenario runs until all the Vusers have finished running.
+Note: In a Real-world schedule, this option is available after the first time the Vusers start running only.
+Run for XX days and <00:00:00> (HH:MM:SS)
+The scenario runs in its current state for the specified amount of time (in days, hours, minutes, and seconds) before continuing with the next action.
+The default Duration period is 5 minutes.
+Run indefinitely
+(Basic schedule only) The scenario runs indefinitely.
+36.	What are the options available in loadrunner controller scenario stop vusers action of global schedule?
+Stop vusers action of global schedule will be having the following options:
+Stop XX Vusers: Simultaneously
+(Default) LoadRunner stops the specified number (All or XX) of running Vusers at once.
+Stop XX Vuser: YY Vusers every <00:00:00> (HH:MM:SS)
+LoadRunner stops the specified number of Vusers (All or XX) gradually. That is, LoadRunner stops YY Vusers, and waits the specified time (in hours, minutes, and seconds) before stopping another YY Vusers.
+37.	What are the action types available in loadrunner controller scenario add action of global schedule?
+The action types available in loadrunner controller scenario are:
+1) Start Vusers
+The Start Vusers action instructs LoadRunner to start running Vusers.
+2) Duration
+The Duration action instructs LoadRunner to continue running the scenario in the current state, for the specified amount of time.
+3) Stop Vusers
+The Stop Vusers action instructs LoadRunner to stop the running Vusers.
+38.	What are the actions available when you are creating a schedule by group real world in loadrunner controller scenario?
+1) Start Group The Start Group action defines when to start running a Vuser group. This action is available for group schedules only.
+Note: By default, the Start Group action appears as the first action in the Actions grid when you select Schedule by: Group. It is always followed by the Initialize action. It cannot be deleted.
+2) Initialize
+The Initialize action instructs LoadRunner to prepare the Vusers so that they are in the Ready state and can run.
+Note: By default, the Initialize action appears in the Actions grid for all schedule types. It cannot be deleted.
+3) Start Vusers
+The Start Vusers action instructs LoadRunner to start running Vusers.
+4) Duration
+The Duration action instructs LoadRunner to continue running the scenario in the current state, for the specified amount of time.
+5) Stop Vusers
+The Stop Vusers action instructs LoadRunner to stop the running Vusers.
+39.	What are the options available in loadrunner controller scenario Start group action of schedule by group real world?
+the options available in loadrunner controller scenario Start group action are:
+In the Start/Stop Vusers box, enter the number of Vusers to start/stop running, and select whether to:
+start/stop running all the Vusers simultaneously
+start/stop running the Vusers gradually
+In this case, enter the number of Vusers to start/stop at a time, and at what time interval
+40.	How do you set the results folder to write the results in a specific folder in loadrunner controller?
+The results folder to write the results in a specific folder will be done with the below mentioned steps:
+1) Select the menu options Results -> Results Settings...
+2) Set Results Settings Directory Dialog box opens
+3) Enter the "Results Name"
+4) Enter the Directory path
+41.	How the user status will change when the users are running in real world schedule?
+The user status will change as mentioned in the order of sequence:
+1) Down The Vuser is down.
+2) Pending The Vuser is ready to be initialized and is waiting for an
+available load generator, or is transferring files to the load generator. The Vuser will run when the conditions set in its scheduling attributes are met.
+3) Initializing The Vuser is being initialized on the remote machine.
+4) Ready The Vuser already performed the init section of the script and is ready to run.
+5) Running The Vuser is running. The Vuser script is being executed on a load generator.
+6) Rendezvous The Vuser has arrived at the rendezvous and is waiting to be released by LoadRunner.
+6) Done.Passed The Vuser has finished running. The script passed.
+7) Done.Failed The Vuser has finished running. The script failed.
+8) Error A problem occurred with the Vuser. Check the Status field on the Vuser dialog box or the output window for a complete explanation of the error.
+9) Gradual Exiting The Vuser is completing the iteration or action it is running (as defined in Tools > Options > Run-Time Settings) before exiting.
+10) Exiting The Vuser has finished running or has been stopped, and is now exiting.
+11) Stopped The Vuser stopped when the Stop command was invoked.
+42.	What is a Service Level Agreement in loadrunner?
+Service level agreements (SLAs) enable you to define goals for your load test scenario.
+During a scenario run, the Controller measures the performance and collects data.
+Analysis compares this data against thresholds defined in the SLAs.
+43.	What are the types of Service Level Agreements available in loadrunner?
+There are two types of Service Level Agreements available
+SLA status determined at time intervals over a timeline. Analysis displays SLA statuses at set time intervals—for example, every 10 seconds—over a timeline within the run.
+1) SLAs for Average Transaction Response Time
+2)SLAs for Errors Per Second.
+SLA status determined over the whole run. Analysis displays a single SLA status for the whole scenario run.
+The analysis displays a single SLA status for the whole scenario run:
+1) Total Hits per run
+2) Average Hits (hits/second) per run
+3) Total Throughput (bytes) per run
+4) Average Throughput (bytes/second) per run
+44.	What are the types of load criteria’s available in goal definition of service level agreements or SLA?
+The types of load criteria’s available in goal definition are:
+1) None
+2) Running vusers
+3) Hits per second
+4) Throughput
+5) Transactions per second
+6) Transactions per second pass
+45.	How can you set thresholds in service level agreements or SLAs of loadrunner controller?
+Thresholds are nothing but the maximum wait points.
+Set maximum thresholds for each transaction that you are evaluating.
+If you defined load criteria in the previous step, you set thresholds for each transaction per the defined load value ranges.
+If you did not define load criteria, you set a single threshold for each transaction.
+Enter the relevant thresholds (per load criteria, if defined) in the table displayed at the top the page.
+46.	How can you edit an existing service level agreement in loadrunner controller?
+You can edit an existing service level agreement
+1) Select the Service level agreement in the existing Service level agreement area
+2) Click on edit button
+3) Service level agreement goal definition window will pop up
+4) Edit the goal definition as needed
+47.	Can we change the type of service level agreement after creation in loadrunner controller?
+No, the type of service level agreement cannot be changed.
+Once we select the type of service level agreement, the same type will be used in all the cases.
+If you want to change the type. The existing service level agreement needs to be deleted. And the new service level agreement needs to be created.
+48.	What is monitoring in load testing?
+LoadRunner enables you to view data generated during scenario execution using the online monitors. You specify the machines that the Controller will monitor during a scenario execution, and view the data collected by the monitors, using the LoadRunner online graphs.
+A primary factor in a transaction's response time is its resource usage. By monitoring resources during a scenario run, you can determine why a bottleneck occurred on a particular machine. LoadRunner's server resource monitors let you keep track of resources used during a scenario. LoadRunner displays the selected resource monitors in real time during test execution. You can select the server resource measurements to monitor both before and during the scenario.
+49.	What are the basic types of monitors available in loadrunner?
+The online monitors are divided into the following categories:
+Run-Time Monitors. Display the number and status of Vusers participating in the scenario, as well as the number and types of errors that the Vusers generate.
+Transaction Monitors. Display the transaction rate and response time during scenario execution.
+Web Resource Monitors. Provide information about the number of Web connections, throughput volume, HTTP responses, server retries, and pages downloaded to the Web servers during the scenario.
+System Resource Monitors. Measure the Windows, UNIX, Tuxedo, SNMP, and SiteScope resources used during a scenario.
+Network Delay Monitor. Displays information about the network delays on your system.
+Firewall Monitor. Measures statistics of the firewall servers during the scenario.
+Web Server Resource Monitors. Measure statistics of the Microsoft IIS, iPlanet (SNMP), and iPlanet/Netscape Web servers during the scenario.
+Web Application Server Resource Monitors. Measure statistics of the Ariba, iPlanet (NAS), Microsoft ASP, WebLogic (SNMP), and WebSphere application servers during the scenario.
+Database Server Resource Monitors. Measure statistics of the SQL server, Oracle, and DB2 databases during the scenario.
+Streaming Media Monitors. Measure statistics of the RealPlayer and Media Player client during the scenario.
+ERP/CRM Server Resource Monitors. Measure statistics of the SAP Portal, SAP CCMS, SAPGUI, Siebel Server Manager, Siebel Web Server, and PeopleSoft (Tuxedo) servers during the scenario.
+Java Performance Monitor. Measures statistics of Java 2 Platform, Enterprise Edition (J2EE) objects, and Java-based applications, using J2EE machines.
+J2EE & .NET Diagnostics Monitors. Provide information to trace, time, and troubleshoot individual transactions through J2EE & .NET Web, application, and database servers.
+Application Component Monitor. Measures statistics of the Microsoft COM+ server during a scenario run.
+Application Deployment Solutions Monitor. Measures statistics of the Citrix MetaFrame XP and 1.8 servers during a scenario run.
+Middleware Performance Monitors. Measure statistics of the Tuxedo and IBM WebSphere MQ servers during a scenario run.
+Infrastructure Resources Monitor. Measures statistics of the network client data points during a scenario run.
+50.	What is client side monitoring in loadrunner controller?
+The monitors used for validating client side measures of the load test are:
+Run-Time Monitors. Display the number and status of Vusers participating in the scenario, as well as the number and types of errors that the Vusers generate.
+Transaction Monitors. Display the transaction rate and response time during scenario execution.
+Web Resource Monitors. Provide information about the number of Web connections, throughput volume, HTTP responses, server retries, and pages downloaded to the Web servers during the scenario.
+51.	What is server side monitoring in loadrunner controller?
+The monitors used during the load test for evaluating the servers performance are:
+System Resource Monitors. Measure the Windows, UNIX, Tuxedo, SNMP, and SiteScope resources used during a scenario.
+Network Delay Monitor. Displays information about the network delays on your system.
+Firewall Monitor. Measures statistics of the firewall servers during the scenario.
+Web Server Resource Monitors. Measure statistics of the Microsoft IIS, iPlanet (SNMP), and iPlanet/Netscape Web servers during the scenario.
+Web Application Server Resource Monitors. Measure statistics of the Ariba, iPlanet (NAS), Microsoft ASP, WebLogic (SNMP), and WebSphere application servers during the scenario.
+Database Server Resource Monitors. Measure statistics of the SQL server, Oracle, and DB2 databases during the scenario.
+Streaming Media Monitors. Measure statistics of the RealPlayer and Media Player client during the scenario.
+ERP/CRM Server Resource Monitors. Measure statistics of the SAP Portal, SAP CCMS, SAPGUI, Siebel Server Manager, Siebel Web Server, and PeopleSoft (Tuxedo) servers during the scenario.
+Java Performance Monitor. Measures statistics of Java 2 Platform, Enterprise Edition (J2EE) objects, and Java-based applications, using J2EE machines.
+J2EE & .NET Diagnostics Monitors. Provide information to trace, time, and troubleshoot individual transactions through J2EE & .NET Web, application, and database servers.
+Application Component Monitor. Measures statistics of the Microsoft COM+ server during a scenario run.
+Application Deployment Solutions Monitor. Measures statistics of the Citrix MetaFrame XP and 1.8 servers during a scenario run.
+Middleware Performance Monitors. Measure statistics of the Tuxedo and IBM WebSphere MQ servers during a scenario run.
+Infrastructure Resources Monitor. Measures statistics of the network client data points during a scenario run.
+52.	Which are the types of graphs comes under client side monitoring in loadrunner controller?
+The types of graphs comes under client side monitoring:
+1) Running vusers
+2) Transaction Response Time
+3) User Defined Data Points
+4) Total Transaction / Sec
+5) Hits per Second
+6) Throughput
+7) Error Statistics
+53.	How many maximum graphs you can monitor using loadrunner controller?
+The default number of graphs used in loadrunner are: 4
+One can also view one, two, four, eight and at the maximum sixteen graphs can be viewed.
+If one want to view more than sixteen, it is not possible in loadrunner
+Follow the below mentioned steps to view the graphs
+Select the Menu option View-> View Graphs -> Enter the number of graphs to be viewed
+54.	How do you add a monitor graph in loadrunner controller?
+Follow the below mentioned steps to add the monitor graph in load runner controller
+1) Open the controller scecnario
+2) Select the Run tab (in the bottom) of controller
+3) View the graphs more than 8 (View -> View Graphs ->Enter number 8)
+4) Drag the desired graph and drop into the graph area
+5) Right Click on the graph and select Add measurements
+6) Dialog pops up based on the counter you have chosen
+7) Click on Add button
+8) Add machine dialog box pops up
+9) Enter the host name
+10) Select the appropriate platform
+11) Click OK
+55.	How do you add measurements or counters from a server in loadrunner controller?
+To add the monitor graph follow the steps mentioned in 54. How do you add a monitor graph in loadrunner controller?
+The additional measures for a windows based server can be added with the below mentioned steps:
+1) If there are any custom counters needs to be added click on Add button from measurements area (in the bottom)
+2) If the server is a remote machine, it will pop up with server authentication dialog box.
+3) Enter the credentials and click ok
+4) If the server is s windows machine, it will show the windows resources dialog box
+5) Select the object type
+6) Select the counters for respective object
+7) Click on add
+8) Repeat the step 5 to 7 till all the counters gets added
+9) Finally click close, then all the added counters can be seen from Resources measure on host
+10) Click OK, then all the measures starts monitored on the controller
+56.	Which are the default counters or measures used for monitoring the windows server side performance in loadrunner controller?
+The default counters or measures for windows monitors given by load runner are:
+% Disk Time (PhysicalDisk _Total)
+Disk Time is the percentage of elapsed time that the selected disk drive is busy servicing read or write requests.
+% Processor Time (Processor _Total)
+% Processor Time is the percentage of time that the processor is executing a non-Idle thread. This counter was designed as a primary indicator of processor activity. It is calculated by measuring the time that the processor spends executing the thread of the Idle process in each sample interval, and subtracting that value from 100%. (Each processor has an Idle thread which consumes cycles when no other threads are ready to run). It can be viewed as the percentage of the sample interval spent doing useful work. This counter displays the average percentage of busy time observed during the sample interval. It is calculated by monitoring the time the service was inactive, and then subtracting that value from 100%.
+Available MBytes (Memory)
+Available MBytes is the amount of physical memory available to processes running on the computer, in Megabytes, rather than bytes as reported in Memory\\Available Bytes. It is calculated by adding the amount of space on the Zeroed, Free, and Stand by memory lists. Free memory is ready for use; Zeroed memory are pages of memory filled with zeros to prevent later processes from seeing data used by a previous process; Standby memory is memory removed from a process' working set (its physical memory) on route to disk, but is still available to be recalled. This counter displays the last observed value only; it is not an average.
+File Data Operations/sec (System)
+File Data Operations per second is the rate that the computer is issuing Read and Write operations to file system devices. It does not include File Control Operations.
+Interrupts/sec (Processor _Total)
+Interrupts/sec is the average number of hardware interrupts the processor is receiving and servicing in each second. It does not include DPCs, which are counted separately. This value is an indirect indicator of the activity of devices that generate interrupts, such as the system clock, the mouse, disk drivers, data communication lines, network interface cards and other peripheral devices. These devices normally interrupt the processor when they have completed a task or require attention. Normal thread execution is suspended during interrupts. Most system clocks interrupt the processor every 10 milliseconds, creating a background of interrupt activity. This counter displays the difference between the values observed in the last two samples, divided by the duration of the sample interval.
+Page Faults/sec (Memory)
+Page Faults/sec is a count of the Page Faults in the processor. A page fault occurs when a process refers to a virtual memory page that is not in its Working Set in main memory. A Page Fault will not cause the page to be fetched from disk if that page is on the standby list, and hence already in main memory, or if it is in use by another process with whom the page is shared.
+Pages/sec (Memory)
+Pages/sec is the number of pages read from the disk or written to the disk to resolve memory references to pages that were not in memory at the time of the reference. This is the sum of Pages Input/sec and Pages Output/sec. This counter includes paging traffic on behalf of the system Cache to access file data for applications. This value also includes the pages to/from non-cached mapped memory files. This is the primary counter to observe if you are concerned about excessive memory pressure (that is, thrashing), and the excessive paging that may result.
+Pool Nonpaged Bytes (Memory)
+Pool Nonpaged Bytes is the number of bytes in the Nonpaged Pool, a system memory area where space is acquired by operating system components as they accomplish their appointed tasks. Nonpaged Pool pages cannot be paged out to the paging file, but instead remain in main memory as long as they are allocated.
+Private Bytes (Process _Total)
+Private Bytes is the current number of bytes this process has allocated that cannot be shared with other processes.
+Processor Queue Length (System)
+Processor Queue Length is the instantaneous length of the processor queue in units of threads. This counter is always 0 unless you are also monitoring a thread counter. All processors use a single queue in which threads wait for processor cycles. This length does not include the threads that are currently executing. A sustained processor queue length greater than two generally indicates processor congestion. This is an instantaneous count, not an average over the time interval.
+Threads (Objects)
+Threads is the number of threads in the computer at the time of data collection. Notice that this is an instantaneous count, not an average over the time interval. A thread is the basic executable entity that can execute instructions in a processor.
+57.	How can you add windows custom application counters from windows resources in loadrunner controller?
+To add the monitor graph follow the steps mentioned in 54. How do you add a monitor graph in loadrunner controller?
+The additional measures for a windows based server can be added with the below mentioned steps:
+1) If there are any custom counters needs to be added click on Add button from measurements area (in the bottom)
+2) If the server is a remote machine, it will pop up with server authentication dialog box.
+3) Enter the credentials and click ok
+4) If the server is s windows machine, it will show the windows resources dialog box
+5) Select the object type
+6) Select the counters for respective object
+7) Click on add
+8) Repeat the step 5 to 7 till all the counters gets added
+9) Finally click close, then all the added counters can be seen from Resources measure on host
+10) Click OK, then all the measures starts monitored on the controller
+58.	Why do you use loadrunner diagnostics?
+Loadrunner diagnostics are used for profiling the application code server code and database server for identifying the issues at the code or database level.
+For example, if there is any transaction is taking more than expected time. For getting the detailed information on which of the servers are causing the problem for the high response time, we use diagnostics.
+Using diagnostics we can easily pin point the problem on the application server, which API is causing the problem.
+Similarly we can also pin point the problem on the database which of the SQL/SQLs is/are causing the problem.
+59.	How do you enable multiple run time settings mode?
+Using the multiple run time settings we can set the common settings for multiple groups at a time.
+The multiple run time settings mode can be chosen with the below mentioned steps:
+1) Open the controller scenario
+2) Select the multiple groups on the controller
+3) Click on the run time settings
+4) The dialog box "Modifying Run-Time Settings for Multiple Scripts" opens
+60.	What is the difference between Shared RTS and Individual RTS?
+The Modifying Run-Time Settings for Multiple Scripts will be invoked with the link:- 59. How do you enable multiple run time settings mode?
+Select a method for modifying run-time settings of multiple scripts:
+Shared RTS. Opens one window containing all of the run-time settings in blank mode. In this mode, you set only the options that you would like to modify for all selected scripts. All other run-time settings remain unchanged.
+1) In shared RTS, all the fields will be with blank settings
+2) Used for setting common settings
+Individual RTS. Opens a separate window for each selected script. In this mode, you modify each script's settings individually.
+1) Individual RTS, all the fields will be with default or initial settings
+2) Used for giving individual run time settings for each script
+ANALYSIS FAQ’s
+1.	What does summary report contain in loadrunner analysis?
+The Summary report contains:
+Analysis Summary:
+Analysis Summary has the details of period of load test execution with exact date followed by time, Scenario Name, Results in Session, and Duration of load test.
+Statistics Summary:
+The Statistics Summary report contains the details of maximum running vusers, total throughput in bytes, throughput in bytes/second, total hits, and average hits per second.
+5 Worst Transactions:
+5 Worst Transactions section contains the five highly deviated average transaction times from SLAs.
+Scenario Behavior Over Time:
+This Scenario Behavior Over Time section contains the SLA status of the measurements displayed over time. One can select a specific time range for each transaction in order to analyze the time range. SLA status is understood based on the color red color represents failure, green color is for success, Grey color is for no data.
+Transaction Summary:
+Transaction Summary report contains the total passed, total failed, and total stopped transactions.
+And also it contains the other detailed information of transaction name, SLA Status, minimum, average, maximum, Std. deviation, 90 Percent, Pass, Fail, and Stop.
+HTTP Responses Summary:
+HTTP Responses codes with total per second
+2.	What are the worst transactions in summary report loadrunner analysis?
+The Worst Transactions:
+The Worst Transactions section is displayed as part of the analysis summary report. This contains the five highly deviated average transaction times from SLAs.
+The worst transaction section displays if the response times of the average transactions are more than the expected SLAs.
+3.	How does load runner gives the ranking of worst transactions in the summary report?
+Ranking of the worst transactions in the summary report will be displayed based on highest max exceeding ratio from the defined service level agreements. The highest max exceeded transaction will be displayed first, and the next max exceeded will be displayed in the worst transaction section.
+If there are more than five transactions are exceeding defined SLA's, then only the highest max exceeding first five transactions will be displayed in the worst transactions section.
+4.	What does scenario behavior over time graph contain in loadrunner analysis?
+The SLA status of the measurements displayed over time in the graph. The complete duration is divided into the time equal time periods, and the SLAs will be applied in each of the time period. Based on the status of SLA within each of the time period the graph color will be presented as red if it failed, green if it is passed, grey if there is no data.
+You can select a specific time range for each transaction in order to analyze the time range.
+5.	What does running vuser graph contain in loadrunner analysis?
+Displays the number of Vusers that executed Vuser scripts, and their status, during each second of a load test. This graph is useful for determining the Vuser load on your server at any given moment
+The running vusers graph displays the number of active running vusers over the time period. In the graph X-axis represents the time duration and Y-axis represents the number of running virtual users. This gives the exact picture of how the virtual users are running during the load test execution.
+Active running vusers means the users will be in the status like running, think time and rendezvous.
+6.	What does hits per second graph contain in loadrunner analysis?
+Displays the number of hits made on the Web server by Vusers during each second of the load test. This graph helps you evaluate the amount of load Vusers generate, in terms of the number of hits.
+Using this graph one can easily determine is there any problems with the web server.
+7.	What does throughput graph contain in loadrunner analysis?
+Displays the amount of throughput (in bytes) on the Web server during the load test. Throughput represents the amount of data that the Vusers received from the server at any given second. This graph helps you to evaluate the amount of load Vusers generate, in terms of server throughput.
+Using the throughput graph, one can easily identify the network bandwidth related issues.
+8.	How do you check the status of scenario SLAs by looking into the colors in loadrunner analysis?
+The SLAs status can be seen in the "scenario behavior over time graph" in summary report. To know more about visit the What does scenario behavior over time graph contain in loadrunner analysis?
+Based on the status of SLA within each of the time period the graph color will be presented as
+Red if the Service Level Agreement status is failed
+Green if the Service Level Agreement status is passed
+Grey if there is no data on Service Level Agreement status
+9.	What are the default graphs generated by load runner analysis?
+The default graphs generated by loadrunner when the analysis starts from the controller results are:
+Running Vusers: see the link for more details What does running vuser graph contain?
+Hits per Second: see the link for more details What does running vuser graph contain in loadrunner analysis
+Throughput: see the link for more details What does throughput graph contains in loadrunner analysis?
+Transaction Summary: see the link for more details What does transaction Summary graph contains in loadrunner analysis?
+Average Transaction Response Time: see the link for more details What does Average Transaction Response Time graph contain in loadrunner analysis?
+10.	What does vuser Summary graph contain in loadrunner analysis?
+The vuser Summary graph displays the number of Vusers that completed their run successfully, stopped their run, or ended with errors.
+Using this graph a load test engineer can determine the validity of the users for further analysis.
+11.	What does Rendezvous graph contain in loadrunner analysis?
+The Rendezvous graph indicates when Vusers were released at rendezvous points and how many Vusers were released at each point.
+Using this graph the load test engineer can determine how the hits and throughput graphs impacted due to the rendezvous.
+Because the rendezvous point, each release makes more hits on the web server. And that causes more hits per second on the web server and high throughput over the network. This will also impact in high deviation in average transaction response times.
+12.	What does transaction Summary graph contain in loadrunner analysis?
+Transaction Summary graph displays the number of transactions that passed, failed, stopped, or ended with error.
+For the load test engineer, this will be helpful to understand the transaction distribution. How many iterations have been executed by each of the script for the groups.
+13.	How to compute transactions per second in load testing?
+The transactions per second can be computed based on how many specific transactions executed over a duration of the test. And then the it will be computed for second.
+For example, if there are 2 transactions per vuser executed within 60 seconds, then the transaction per second will be 2/60 transactions per second = 0.03333 transactions per second.
+For the same above example if there are 100 users are executing, then the transaction per second would be 0.3333* 100 = 3.333 transactions per second.
+14.	What does transactions per second graph contain in loadrunner analysis?
+The transactions per second graph displays the number of completed transactions (both successful and unsuccessful) performed during each second of a load test. This graph helps you determine the actual transaction load on your system at any given moment.
+Using this graph the load test engineer can determine how many transactions are executed at every second. For more details see the link How to compute transactions per second in load testing?
+15.	How to compute total transactions per second?
+Total transactions per second will be computed based on the number of transactions available in the VuGen script.
+For example there are five transactions in the script the names like - Home, Login, Search, Book and Logout. The total transactions for each execution would be 10. If there are 2 iterations executes in 60 seconds, then the total transactions per second would be 10/60 = 0.3333
+If there are 100 users are running then the total transactions per second would be 33.33 transactions per second
+16.	What does total transactions per second graph contain in loadrunner analysis?
+The total transactions per second graph displays the total number of completed transactions (both successful and unsuccessful) performed during each second of a load test. This graph helps you determine the actual transaction load on your system at any given moment.
+17.	What does transactions performance summary graph contain in loadrunner analysis?
+The transactions performance summary graph displays the minimum, average, and maximum response time in a bar chart with labels for all the transactions in the load test. The X-axis represents the name of the transactions and Y-axis represents the Response Time in seconds.
+This graph enables the load test engineer to check the consistency of the transaction response times.
+18.	What does transaction response time under load graph contain in loadrunner analysis?
+The transaction response time under load graph displays average transaction response times relative to the number of Vusers running at any given point during the load test. This graph helps you view the general impact of Vuser load on performance time and is most useful when analyzing a load test which is run with a gradual load.
+Using the graph, a load test engineer can easily determine the scalability factor, when the number of users are increasing how the response times are spanning out.
+19.	What does transaction response time percentile graph contain in loadrunner analysis?
+The transaction response time percentile graph displays the percentage of transactions that were performed within a given time range.
+This graph helps the load test engineer to determine the percentage of transactions that meet the performance criteria defined for your system.
+20.	What does transaction response time distribution graph contain in loadrunner analysis?
+The transaction response time distribution graph displays the number of times a transaction was completed over a distribution of time ranges. Note that this graph only displays information for a single transaction at a time.
+Using the transaction response time distribution graph, a load test engineer can determine how many transaction have finished within a specific time interval.
+21.	What does throughput MB graph contains in loadrunner analysis?
+The throughput MB graph Displays the amount of throughput (in megabytes) on the Web server during the load test. Throughput represents the amount of data that the Vusers received from the server at any given second.
+This graph helps you to evaluate the amount of load Vusers generate, in terms of server throughput. Using this graph one can determine the network bandwidth related issues.
+22.	What does http status code summary graph contain in loadrunner analysis?
+The http status code summary graph displays the distribution of the various HTTP protocol status codes returned from the Web Server during the load test.
+Using this graph you can determine the web or server side errors. Like request forbidden (403), page not found error (404), page redirection(303), internal server error (505) etc.
+23.	What does http responses per second graph contain in loadrunner analysis?
+The http responses per second graph displays the number of the different HTTP status codes returned from the Web server during each second of the load test.
+Using this graph you can determine the response validity how many requests are passed failed and redirected. Since this is a time bound graph, you can determine the response statuses in the entire duration of the load test.
+24.	What does connections graph contain in loadrunner analysis?
+The connections graph displays the number of Connections. The pattern of the graph is similar to number of running users graph.
+The Connections graph shows the number of open TCP/IP connections (y-axis) at each point in time of the load test scenario (x-axis). One HTML page may cause the browser to open several connections, when links on the page go to different Web addresses. Two connections are opened for each Web server.
+This graph is useful in indicating when additional connections are needed. For example, if the number of connections reaches a plateau, and the transaction response time increases sharply, adding connections would probably cause a dramatic improvement in performance (reduction in the transaction response time).
+25.	What does connections per second graph contain in loadrunner analysis?
+The connections per second graph displays the number of new TCP/IP connections opened per Second and the number of connections shut down for each second of the load test scenario.
+The number of new connections should be a small fraction of the number of hits per second, because new TCP/IP connections are very expensive in terms of server, router and network resource consumption. Ideally, many HTTP requests should use the same connection, instead of opening a new connection for each request.
+What does web page diagnostics graph contain in loadrunner analysis?
+By default the Web Page Diagnostics graph displays average download time in seconds.
+The Web Page Diagnostics graph can be used for assessing web component or element level issues by diagnosing the web pages.
+The Web Page Diagnostics graphs used for assessing the transaction response times whether they are affected by page content. Using the Web Page Diagnostics graphs, problematic elements can be analyzed. For example,the component which spent more time on server or network, images that download slowly, or broken links of a Web site.
+What are the diagnostics options are there in web page diagnostics graph in loadrunner analysis?
+The the diagnostics options available in web page diagnostics graph are:
+Download Time. Displays a table with a breakdown of the selected page's download time. The size of each page component (including the component's header) is displayed. See the Page Download Time Breakdown Graph for more information about this display.
+Component (Over Time). Displays the Page Component Breakdown (Over Time) Graph for the selected Web page.
+Download Time (Over Time). Displays the Page Download Time Breakdown (Over Time) Graph for the selected Web page.
+Time to First Buffer (Over Time). Displays the Time to First Buffer Breakdown (Over Time) Graph for the selected Web page.
+29.	How do you diagnose the component over time in web page diagnostics graph in loadrunner analysis?
+The component Breakdown (Over Time) graph displays the average response time in seconds for each Web page and its components during each second of the load test scenario run.
+The x-axis represents the elapsed time from the beginning of the scenario run. The y-axis represents the average response time in seconds for each component.
+30.	How do you diagnose the download over time in web page diagnostics graph in loadrunner analysis?
+The Download Time Breakdown (Over Time) graph displays a breakdown of each page component's download time during each second of the load test scenario run.
+The x-axis represents the elapsed time from the beginning of the scenario run. The y-axis represents the time (in seconds) taken for each step in the download process.
+31.	How do you diagnose the time to first buffer over time in web page diagnostics graph in loadrunner analysis?
+The Time to First Buffer Breakdown (Over Time) graph displays each Web page component's server and network time (in seconds) during each second of the load test scenario run, for the period of time until the first buffer is successfully received back from the Web server. You can use this graph to determine when during the scenario run a server- or network-related problem occurred.
+The x-axis represents the elapsed time from the beginning of the scenario run. The y-axis represents the average network or server time (in seconds) for each component.
+32.	What does page component breakdown graph contain in loadrunner analysis?
+The page component graph is displayed in a pie chart, representing out of 100% of total time each component how much of percentage of total time has been spent is plotted.
+The Page Component Breakdown graph displays the average download time (in seconds) for each Web page and its components.
+To isolate problematic components, it may be helpful to sort the legend according to the average number of seconds taken to download a component. To sort the legend by average, click the Graph's Average column.
+33.	What does page component breakdown over time graph contain in loadrunner analysis?
+The page component break down over time is a line chart. Each component time will be shown a line over the time line.
+The Page Component Breakdown (Over Time) graph displays the average response time (in seconds) for each Web page and its components during each second of the load test scenario run.
+The x-axis represents the elapsed time from the beginning of the scenario run. The y-axis represents the average response time (in seconds) for each component.
+34.	What does page download time breakdown graph contain in loadrunner analysis?
+The page download time breakdown graph is a stacked bar graph. Each bar represents a page time. And each stack in a bar represents page component time.
+The Page Download Time Breakdown graph displays a breakdown of each page component's download time, enabling you to determine whether slow response times are being caused by network or server errors during Web page download.
+35.	What does page download time breakdown over time graph contain in loadrunner analysis?
+Page download time breakdown over time graph is a line chart. Each component time will be shown a line over the time line.
+The Page Download Time Breakdown (Over Time) graph displays a breakdown of each page component's download time during each second of the load test scenario run.
+The x-axis represents the elapsed time from the beginning of the scenario run. The y-axis represents the time (in seconds) taken for each step in the download process.
+36.	What does time to first buffer breakdown graph contain in loadrunner analysis?
+Time to first buffer breakdown graph is a stacked bar graph. Each bar represents a page time. And each stack in a bar represents server and network time.
+The Time to First Buffer Breakdown graph displays each Web page component's relative server/network time (in seconds) for the period of time until the first buffer is successfully received back from the Web server. If the download time for a component is high, you can use this graph to determine whether the problem is server- or network-related.
+The x-axis specifies the name of the component. The y-axis shows the average network/server time (in seconds) for each component.
+37.	What does time to first buffer breakdown over time graph contain in loadrunner analysis?
+Time to first buffer breakdown over time graph is a line chart. Network and server time will be shown a line over the time line.
+The x-axis represents the elapsed time from the beginning of the scenario run. The y-axis represents the average network or server time (in seconds) for each component.
+The Time to First Buffer Breakdown (Over Time) graph displays each Web page component's server and network time (in seconds) during each second of the load test scenario run, for the period of time until the first buffer is successfully received back from the Web server. You can use this graph to determine when during the scenario run a server- or network-related problem occurred.
+38.	What does downloaded component size graph contain in loadrunner analysis?
+Downloaded component size graph is a pie chart, representing out of 100% of total downloaded time, each component how much of percentage of total downloaded time has been spent is plotted.
+The Downloaded Component Size graph displays the size of each Web page component.
+39.	Why do you need to merge the graphs in loadrunner analysis?
+The merging is used for comparing several different measurements in a single graph. For easy analysis of graphs, the graph measures will be merged from the same load test scenario into a single graph.
+When the graphs are merged, you can easily understand the pattern of the graphs and their relationships.
+40.	How do you merge the graphs in loadrunner analysis?
+1) Open the Load Runner Analysis
+2) Select a graph
+3) Choose the menu options View > Merge Graphs or click Merge Graphs. The Merge Graphs dialog box opens and displays the name of the active graph.
+4) Select a graph with which you want to merge your active graph. Only the graphs with a common x-axis to the active graph are available.
+5) Select the merge type and a title for the merged graph. By default, Analysis combines the titles of the two graphs being merged. For more information, see Understanding the Merge Graphs Dialog Box.
+6) Click OK.
+41.	What is the difference between overlay and tile graphs in loadrunner analysis?
+To merge the graphs, follow the steps mentioned in How do you merge the graphs in loadrunner analysis?
+The overlay graph:
+Superimpose the contents of two graphs that share a common x- axis. The left y-axis on the merged graph shows the current graph's values. The right y-axis shows the values of the graph that was merged.
+There is no limit to the number of graphs that you can overlay. When you overlay two graphs, the y-axis for each graph is displayed separately to the right and left of the graph.
+When you overlay more than two graphs, Analysis displays a single y-axis, scaling the different measurements accordingly.
+The tile graph:
+View contents of two graphs that share a common x-axis in a tiled layout, one above the other. The left y-axis on the merged graph shows the current graph's values. The right y-axis shows the values of the graph that was merged.
+You can tile only two graphs, not more than two.
+ 	42.	Why do you auto correlate the graphs in loadrunner analysis?
+The auto correlate the graphs in loadrunner analysis is done to find the root cause of the application under test issues. When the auto correlation is done, the graphs are compared and their degree of relationships between the graphs are computed. Using these related graphs, a load test engineer can analyze the graphs and give the reasons for the bottlenecks.
+auto correlate the graphs in loadrunner analysis is done with the below mentioned steps:
+1) Open the Load Runner Analysis
+2) Select a graph
+3) Choose the menu options View > Auto Correlate Graphs
+4) The Correlate Graphs dialog box opens
+5) Select a measurement to correlate with which you want to auto correlate your active graph. Only the graphs with a common x-axis to the active graph are available.
+6) Select the time range for auto correlation
+7) Select the correlation options, and choose which are the other graphs that you want to correlate with.
+8) Click OK.
+43.	How do you do root cause analysis in loadrunner analyzer?
+The root cause analysis in loadrunner analyzer can be done by way of auto correlation.
+Read the details mentioned in Why do you auto correlate the graphs in loadrunner analysis?
+44.	What does auto correlate graph contain in loadrunner analysis?
+The auto correlate graph contain the relationships between the graphs.
+The correlate graph explains the parameters like Correlation Match percentage and correlation (inversely or direct) relations.
+If the graphs are directly related means, both graphs are increasing or decreasing in the similar proportion as mentioned in Correlation Match percentage.
+45.	What are the types of reports generated in loadrunner analysis?
+The types of reports generated in loadrunner analysis are:
+1) HTML Report
+HTML Reports will be very easy to web share and report the results to internal engineering teams. When the HTML report is generated, all the graphs, SLA analysis reports and graphs will be exported into HTML format.
+2) Crystal Reports
+Crystal reports are helpful when the detailed information on Virtual users level data and transactions level data needs to be captured.
+3) Word Report
+Word report will be helpful, if one wants to send the detailed report with further analysis on the results. Word report lets the users to edit the information during and after generation of the report.
+Note: The word report will be generated only when the Microsoft word is installed on the machine where the loadrunner analysis is running.
+46.	How do you analyze the worst transactions in loadrunner analysis?
+The worst transactions in load runner can be analyzed from the summary report.
+Select the transaction length from the Scenario over time graph in summary report. Once the time duration area in the graph for a specific transaction is selected, click on "Analyze transaction" button. Then Analyzed transaction for the specific transaction will be displayed.
+47.	What does Average Transaction Response Time graph contain in loadrunner analysis?
+Displays the average time taken to perform transactions during each second of the load test. This graph helps you determine whether the performance of the server is within acceptable minimum and maximum transaction performance time ranges defined for your system.
+Using these graphs, a load test engineer can easily determine the average transaction response times are stable over the complete test duration.
+65.	How do you add a script wide rule for checking the content in all the pages?
+Script wide rule is used for checking the common content on all the pages. If any page is not having the expected content, the script throws an error and aborts the test. So, when you choose the script wide rule, you have to be very careful in giving the common expected content.
+Follow the below mentioned steps to add script wide rule:
+1) Open the menu option Vuser -> Run-time Settings
+2) Run-time Settings Dialog box opens
+3) Select Content Checks from left navigation, under Internet Protocol
+4) Check the check box of Enable Content check during replay
+5) Click on New Application button -> Give the application name
+6) Click on New Rule button -> Give the Rule name
+7) Enter the Search for Text, which is there in all the pages
