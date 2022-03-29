@@ -2,10 +2,10 @@ categories:
 - performance
 conversations:
 - - What is Performance Testing?
-  -### General Definition
+  - General Definition
     Performance Testing is the process of determining the responsiveness of the system under given hardware, software and load conditions. This process can involve qualitative and quantitative analysis.
     Quantitative analysis like measuring the response time of the business operation in seconds or milliseconds. Qualitative analysis such as scalability, reliability and interoperability. Performance testing can also be done in conjunction with load, stress and volume testing.
-  -### Wikipedia say’s
+  - Wikipedia say’s
     In software engineering, performance testing is in general testing performed to determine how a system performs in terms of responsiveness and stability under a particular workload. It can also serve to investigate measure, validate or verify other quality attributes of the system, such as scalability, reliability and resource usage.
     The main objectives of performance testing is to identify the bottlenecks on Application Under Test. The process of identifying the bottlenecks can be done with diagnosis in different layers of the Application Under Test such as presentation layer (web server), business layer (Application Server), data layer(Database).
     Performance Testing is also used to evaluate the service level agreements (such as average response time of the business scenario, throughput, hits per second and Errors per second etc) of the customer
@@ -18,3 +18,11 @@ conversations:
     5.Capacity Testing
     6.Scalability Testing
     7.Isolation Testing
+- - What is Load Testing ?
+  - Load testing is the simplest form of performance testing. A load test is usually conducted to understand the behaviour of the system under a specific expected load. This load can be the expected concurrent number of users on the application performing a specific number of transactions within the set duration. This test will give out the response times of all the important business critical transactions. If the database, application server, etc. are also monitored, then this simple test can itself point towards any bottlenecks in the application software.
+    Load testing is process of simulating the multiple users accessing the application under test simultaneously. In this case, the number of users on the system should be as realistic (near to the real time usage) as possible. The main purpose of load testing is to validate the application behavior under normal and peak load conditions.
+  - Results Reported after the load Test
+   •The system will be validated to ensure whether the service level agreements or performance objectives are met
+   •Average, max, min and standard deviation of response times for each scenario will be measure and reported
+   •Resource utilization of each of the systems which are part of AUT will be monitored and reported
+   •If there is any application break point below the peak load condition, it need to be identified and reported

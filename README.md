@@ -1,5 +1,5 @@
 # coronabot-chatterbot
-CoronaBot is a chat bot for answering question regarding Coronavirus
+
 
 Tutorial - https://studygyaan.com/uncategorised/create-web-based-chatbot-in-python-django-flask
 

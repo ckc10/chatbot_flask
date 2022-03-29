@@ -15,7 +15,7 @@ chatbot = ChatBot(
             #'response_selection_method': 'chatterbot.response_selection.get_first_response'
         }
     ],
-    database_uri='sqlite:///db.sqlite3'
+    database_uri='sqlite:///database.sqlite3'
 )
 
 # Training With Own Questions 
