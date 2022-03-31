@@ -11,7 +11,7 @@ chatbot = ChatBot(
             'import_path': 'chatterbot.logic.BestMatch',
             'default_response': 'I am sorry, but I do not understand. I am still learning.',
             'maximum_similarity_threshold': 0.90,
-            'statement_comparison_function': 'chatterbot.comparisons.LevenshteinDistance',
+            #'statement_comparison_function': 'chatterbot.comparisons.LevenshteinDistance',
             #'response_selection_method': 'chatterbot.response_selection.get_first_response'
         }
     ],

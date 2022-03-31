@@ -22,7 +22,58 @@ conversations:
   - Load testing is the simplest form of performance testing. A load test is usually conducted to understand the behaviour of the system under a specific expected load. This load can be the expected concurrent number of users on the application performing a specific number of transactions within the set duration. This test will give out the response times of all the important business critical transactions. If the database, application server, etc. are also monitored, then this simple test can itself point towards any bottlenecks in the application software.
     Load testing is process of simulating the multiple users accessing the application under test simultaneously. In this case, the number of users on the system should be as realistic (near to the real time usage) as possible. The main purpose of load testing is to validate the application behavior under normal and peak load conditions.
   - Results Reported after the load Test
-   •The system will be validated to ensure whether the service level agreements or performance objectives are met
-   •Average, max, min and standard deviation of response times for each scenario will be measure and reported
-   •Resource utilization of each of the systems which are part of AUT will be monitored and reported
-   •If there is any application break point below the peak load condition, it need to be identified and reported
+    •The system will be validated to ensure whether the service level agreements or performance objectives are met
+    •Average, max, min and standard deviation of response times for each scenario will be measure and reported
+    •Resource utilization of each of the systems which are part of AUT will be monitored and reported
+    •If there is any application break point below the peak load condition, it need to be identified and reported
+- - Endurance / Longevity / Soak Testing is part of load testing. The test will be executed on AUT with huge volume of data for an extended period of time. The main purpose of endurance testing is to check the AUT reliability and stability. Endurance testing, is usually done to determine if the system can sustain the continuous expected load. During soak tests, memory utilization is monitored to detect potential leaks. Also important, but often overlooked is performance degradation. That is, to ensure that the throughput and/or response times after some long period of sustained activity are as good or better than at the beginning of the test. It essentially involves applying a significant load to a system for an extended, significant period of time. The goal is to discover how the system behaves under sustained use.
+  - Results Reported after the Endurance / Longevity / Soak Testing Test
+    When the endurance test is conducted on a multi tier web based enterprise level applications the following kind of results will be reported
+    •Memory leaks on the application servers
+    •JVM Heap size utilization on the application servers
+    •Connection leaks on the database server
+    •Cursor leaks on the data base servers
+    •Response time (consistency or degradation) comparison for start of the load test to end of the load test
+    •Systems Resource (Memory, CPU, Network and Disk usage etc) comparison for beginning of the load test to end of the load test
+    •Application errors occurrence over the period of time
+- - Stress Testing
+  - Stress testing is the process of validating the AUT behavior under extreme or peak load conditions. In this type of testing the break point of the application will be identified to conclude the maximum number of users supported by the system without any issues.Stress testing is normally used to understand the upper limits of capacity within the system. This kind of test is done to determine the system's robustness in terms of extreme load and helps application administrators to determine if the system will perform sufficiently if the current load goes well above the expected maximum.
+  - Determining the Stress Point
+    •Transaction response times are exponentially increased
+    •The application started throwing the errors for many users
+    •The system stopped responding
+    •At least one of the server in AUT architecture got crashed
+    •The system resource utilization went beyond the acceptable limits
+  - Results Reported after Stress Testing
+    •The maximum number of users supported by AUT
+    •Let us assume that, the system resources are utilized beyond the expected limits. After the stress test, when the normal amount of users are running, the status of the application in terms of the resources utilization will be reported
+    •Assume that there are many errors are coming when the stress testing is been conducted. After the stress test, when the normal amount of users are running the status of the application in terms of the errors will be reported
+- - Spike Testing
+  - A spike testing is a process of validating the systems behavior in a endurance testing by increasing the users beyond the expected limits for shorter durations. It is part of stress testing.Spike testing is done by suddenly increasing the number of or load generated by, users by a very large amount and observing the behaviour of the system. The goal is to determine whether performance will suffer, the system will fail, or it will be able to handle dramatic changes in load.
+  - Results Reported after Spike Testing
+    •The systems resources are utilization comparison for, with and without spikes
+    •The response times comparison for, with and without spikes
+    •Observation on errors for, with and without spikes
+- - Capacity Testing
+  - Capacity testing is a process of evaluating the existing infrastructure or new infrastructure to support the future growth of the business, where more number of user hits and huge volume of data are expected. This testing will be conducted as part of capacity planning.
+  - Results Reported after capacity Testing
+    •The hardware resource related bottlenecks will be reported
+    •Recommendation on new hardware
+    •Up gradation of existing hardware
+    •Change in the existing application deployment architecture to support the future growth
+    •Introducing new servers in the application deployment architecture
+- - Scalability Testing
+  - Scalability testing is a process of evaluating the systems behavior when the number of simultaneous users is increasing, and the hardware and software resources are fixed. This testing will be conducted for comparing the response times and system resource utilization of AUT when the number of users are increased.
+  - Results Reported after Scalability Testing
+    •The comparison charts of different number of users and their response times
+    •The comparison charts of system resource utilization for different amount of users
+    •Scalability issues when the number of users are incremented
+    •Identification of scalable point of the application
+- -Isolation Testing
+  - Isolation testing is not unique to performance testing but involves repeating a test execution that resulted in a system problem. Often used to isolate and confirm the fault domain. Isolation testing is a process of isolating a specific scenario of the AUT, when the multiple scenarios are part of the load testing. When the load test happens on the AUT, multiple business scenarios will be part of the load test execution. Assume that during the load test execution, one of the scenarios is causing the problem within all the business scenarios. Isolation of that business scenario is called as Isolation testing. The Isolated scenario will be executed with multiple users to determine the problem within AUT Architecture.
+  - Results Reported after Isolation Testing
+    •The problematic scenario in the load test
+    •Which part or layer of the application is identified as problem
+    •Recommendation of fixes
+- - Configuration testing
+  - Rather than testing for performance from the perspective of load, tests are created to determine the effects of configuration changes to the system's components on the system's performance and behaviour. A common example would be experimenting with different methods of load-balancing.
